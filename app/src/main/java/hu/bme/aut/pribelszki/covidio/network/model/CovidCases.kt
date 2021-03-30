@@ -6,7 +6,7 @@ import java.lang.NullPointerException
 import java.util.*
 
 @JsonClass(generateAdapter = true)
-class CovidCases(
+data class CovidCases(
     @Json(name = "ID") val id: String,
     @Json(name = "Message") val message: String,
     @Json(name = "Global") val global: GlobalCases,
@@ -14,7 +14,7 @@ class CovidCases(
 )
 
 @JsonClass(generateAdapter = true)
-class GlobalCases(
+data class GlobalCases(
     @Json(name = "NewConfirmed") val newConfirmed: Int,
     @Json(name = "TotalConfirmed") val totalConfirmed: Int,
     @Json(name = "NewDeaths") val newDeaths: Int,
@@ -25,7 +25,7 @@ class GlobalCases(
     )
 
 @JsonClass(generateAdapter = true)
-class CountryCase(@Json(name = "ID") val id: String,
+data class CountryCase(@Json(name = "ID") val id: String,
                   @Json(name = "Country") val country: String,
                   @Json(name = "CountryCode") val countryCode: String,
                   @Json(name = "Slug") val slug: String,
