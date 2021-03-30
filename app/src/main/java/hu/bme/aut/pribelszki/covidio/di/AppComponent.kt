@@ -3,7 +3,7 @@ package hu.bme.aut.pribelszki.covidio.di
 import co.zsmb.rainbowcake.dagger.RainbowCakeComponent
 import co.zsmb.rainbowcake.dagger.RainbowCakeModule
 import dagger.Component
-import hu.bme.aut.pribelszki.covidio.network.CovidCountryModule
+import hu.bme.aut.pribelszki.covidio.network.CovidModule
 import javax.inject.Singleton
 
 @Singleton
@@ -12,7 +12,7 @@ import javax.inject.Singleton
         RainbowCakeModule::class,
         ViewModelModule::class,
         ApplicationModule::class,
-        CovidCountryModule::class
+        CovidModule::class
     ]
 )
 interface AppComponent: RainbowCakeComponent

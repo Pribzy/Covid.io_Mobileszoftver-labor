@@ -1,6 +1,5 @@
 package hu.bme.aut.pribelszki.covidio.network
 
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -11,7 +10,7 @@ import retrofit2.create
 import javax.inject.Singleton
 
 @Module
-class CovidCountryModule {
+class CovidModule {
 
     @Provides
     @Singleton
@@ -29,6 +28,6 @@ class CovidCountryModule {
 
     @Provides
     @Singleton
-    fun provideCovidCountryApi(retrofit: Retrofit): CovidCountryAPI = retrofit.create()
+    fun provideCovidApi(retrofit: Retrofit): CovidAPI = retrofit.create()
 
 }
