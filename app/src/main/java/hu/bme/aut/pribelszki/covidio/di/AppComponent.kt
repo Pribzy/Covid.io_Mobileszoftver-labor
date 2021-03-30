@@ -4,6 +4,7 @@ import co.zsmb.rainbowcake.dagger.RainbowCakeComponent
 import co.zsmb.rainbowcake.dagger.RainbowCakeModule
 import dagger.Component
 import hu.bme.aut.pribelszki.covidio.network.CovidModule
+import hu.bme.aut.pribelszki.covidio.room.RoomModule
 import javax.inject.Singleton
 
 @Singleton
@@ -12,7 +13,8 @@ import javax.inject.Singleton
         RainbowCakeModule::class,
         ViewModelModule::class,
         ApplicationModule::class,
-        CovidModule::class
+        CovidModule::class,
+        RoomModule::class
     ]
 )
 interface AppComponent: RainbowCakeComponent

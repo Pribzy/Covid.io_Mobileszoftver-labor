@@ -15,7 +15,8 @@ class CovidIOApplication: RainbowCakeApplication() {
     override lateinit var injector: AppComponent
 
     override fun setupInjector() {
-        injector = DaggerAppComponent.create()
+        // TODO: Somehow the .create() method doesn't work. Fix in the future
+        injector = DaggerAppComponent.builder().build()
     }
 
     override fun onCreate() {
