@@ -11,6 +11,6 @@ object Initial : CountryDetailsState()
 
 object Loading : CountryDetailsState()
 
-data class CountryStatusArrived(val countryStatus: CountryStatus) : CountryDetailsState()
-
 object NetworkError: CountryDetailsState()
+
+data class CountryStatusArrived(val countryStatus: CountryStatus) : CountryDetailsState()

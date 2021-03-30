@@ -10,6 +10,6 @@ object Initial : CountryListViewState()
 
 object Loading : CountryListViewState()
 
-data class DataReady(val countryCases: CovidCases) : CountryListViewState()
-
 object NetworkError: CountryListViewState()
+
+data class DataReady(val countryCases: CovidCases) : CountryListViewState()
