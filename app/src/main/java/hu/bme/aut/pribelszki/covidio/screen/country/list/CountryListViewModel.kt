@@ -7,7 +7,7 @@ import javax.inject.Inject
 class CountryListViewModel @Inject constructor(
     private val countryListPresenter: CountryListPresenter
 ): RainbowCakeViewModel<CountryListViewState>(Initial) {
-    fun loadCountryCases() = execute {
+    fun loadCases() = execute {
         viewState = Loading
         //delay(1000)
         viewState = try {
@@ -16,5 +16,9 @@ class CountryListViewModel @Inject constructor(
         } catch (e: Exception) {
             NetworkError
         }
+    }
+
+    fun healCountry(countryId: String) = execute {
+        countryListPresenter.healCountry(countryId)
     }
 }

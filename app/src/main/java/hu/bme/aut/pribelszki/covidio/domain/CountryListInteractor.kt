@@ -11,7 +11,7 @@ class CountryListInteractor @Inject constructor(
         return networkDataSource.getCountries()
     }
 
-    suspend fun healCountry(countryId: Long) {
+    suspend fun healCountry(countryId: String) {
         networkDataSource.healCountry(countryId)
     }
 }

@@ -13,7 +13,7 @@ interface CovidAPI {
     suspend fun getHistoricalCases(@Path("countryName") countryName: String): CountryStatus
 
     @DELETE("/countries/{countryId}")
-    suspend fun healCountry(@Path("countryId") countryId: Long)
+    suspend fun healCountry(@Path("countryId") countryId: String)
 
     @POST("/cases")
     suspend fun addCase(case: NewCase)

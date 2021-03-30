@@ -10,4 +10,8 @@ class CountryListPresenter @Inject constructor(
     suspend fun getCountries(): CovidCases {
         return countryListInteractor.getCountries()
     }
+
+    suspend fun healCountry(countryId: String) {
+        countryListInteractor.healCountry(countryId)
+    }
 }
