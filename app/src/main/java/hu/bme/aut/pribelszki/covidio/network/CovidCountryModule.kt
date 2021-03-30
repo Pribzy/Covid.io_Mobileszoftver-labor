@@ -1,5 +1,6 @@
 package hu.bme.aut.pribelszki.covidio.network
 
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -21,7 +22,7 @@ class CovidCountryModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://covid-api.mmediagroup.fr/v1")
+        .baseUrl("https://api.covid19api.com/")
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
