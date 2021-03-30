@@ -21,7 +21,7 @@ class CovidCountryModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.exchangeratesapi.io/")
+        .baseUrl("https://covid-api.mmediagroup.fr/v1")
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
