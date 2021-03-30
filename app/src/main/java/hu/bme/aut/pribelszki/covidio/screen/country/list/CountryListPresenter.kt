@@ -15,4 +15,12 @@ class CountryListPresenter @Inject constructor(
         countryListInteractor.healCountry(countryId)
     }
 
+    suspend fun addFavourite() {
+        countryListInteractor.addFavourite()
+    }
+
+    suspend fun removeFavourite() {
+        countryListInteractor.removeFavourite()
+    }
+
 }

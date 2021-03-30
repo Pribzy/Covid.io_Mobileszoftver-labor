@@ -8,8 +8,6 @@ class CountryListViewModel @Inject constructor(
     private val countryListPresenter: CountryListPresenter
 ): RainbowCakeViewModel<CountryListViewState>(Initial) {
     fun loadCases() = execute {
-        viewState = Loading
-        //delay(1000)
         viewState = try {
             val countryCases = countryListPresenter.getCountries()
             DataReady(countryCases)
@@ -20,5 +18,13 @@ class CountryListViewModel @Inject constructor(
 
     fun healCountry(countryId: String) = execute {
         countryListPresenter.healCountry(countryId)
+    }
+
+    suspend fun addFavourite() = execute {
+        countryListPresenter.addFavourite()
+    }
+
+    suspend fun removeFavourite() = execute {
+        countryListPresenter.removeFavourite()
     }
 }
