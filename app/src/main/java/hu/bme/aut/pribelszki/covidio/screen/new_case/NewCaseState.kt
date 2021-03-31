@@ -6,4 +6,6 @@ object Initial : NewCaseViewState()
 
 object Loading : NewCaseViewState()
 
+object CaseUploaded : NewCaseViewState()
+
 object NetworkError: NewCaseViewState()
