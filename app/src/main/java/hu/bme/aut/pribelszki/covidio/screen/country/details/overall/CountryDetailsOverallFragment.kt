@@ -1,4 +1,4 @@
-package hu.bme.aut.pribelszki.covidio.screen.country.list
+package hu.bme.aut.pribelszki.covidio.screen.country.details.overall
 
 import android.os.Bundle
 import android.view.View
@@ -9,9 +9,9 @@ import co.zsmb.rainbowcake.extensions.exhaustive
 import hu.bme.aut.pribelszki.covidio.R
 import kotlinx.android.synthetic.main.fragment_country_list.*
 
-class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryListViewModel>() {
+class CountryDetailsOverallFragment: RainbowCakeFragment<CountryDetailsOverallState, CountryDetailsOverallViewModel>() {
 
-    override fun getViewResource() = R.layout.fragment_country_list
+    override fun getViewResource() = R.layout.fragment_country_details_overall
 
     override fun provideViewModel() = getViewModelFromFactory()
 
@@ -19,7 +19,7 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun render(viewState: CountryListViewState) {
+    override fun render(viewState: CountryDetailsOverallState) {
         // TODO: Add render method
     }
 }
