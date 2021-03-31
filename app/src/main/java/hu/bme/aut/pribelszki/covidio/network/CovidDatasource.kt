@@ -16,8 +16,8 @@ class CovidDatasource @Inject constructor(
         covidNetworkAPI.healCountry(countryId)
     }
 
-    suspend fun getCountryStatus(countryName: String): CountryStatus {
-        return covidNetworkAPI.getCountryStatus(countryName)
+    suspend fun getCountryStatuses(countryName: String): List<CountryStatus> {
+        return covidNetworkAPI.getCountryStatuses(countryName)
     }
 
     suspend fun addCase(newCase: NewCase) {

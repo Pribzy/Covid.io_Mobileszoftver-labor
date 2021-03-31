@@ -9,8 +9,8 @@ class CountryDetailsOverallViewModel @Inject constructor(
 ): RainbowCakeViewModel<CountryDetailsOverallState>(Initial) {
     fun loadStatus(countryName: String) = execute {
         viewState = try {
-            val countryStatus = countryDetailsOverallPresenter.getCountryStatus(countryName)
-            CountryStatusArrived(countryStatus)
+            val overallStatuses = countryDetailsOverallPresenter.getOverallStatuses(countryName)
+            OverallStatusesArrived(overallStatuses)
         } catch (e: Exception) {
             NetworkError
         }

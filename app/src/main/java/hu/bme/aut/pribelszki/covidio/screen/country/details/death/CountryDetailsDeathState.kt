@@ -13,4 +13,4 @@ object Loading : CountryDetailsDeathState()
 
 object NetworkError: CountryDetailsDeathState()
 
-data class CountryStatusArrived(val countryStatus: CountryStatus) : CountryDetailsDeathState()
+data class DetailsStatusesArrived(val countryStatuses: List<CountryStatus>) : CountryDetailsDeathState()
