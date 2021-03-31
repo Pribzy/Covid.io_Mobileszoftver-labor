@@ -28,6 +28,6 @@ class CovidModule {
 
     @Provides
     @Singleton
-    fun provideCovidApi(retrofit: Retrofit): CovidAPI = retrofit.create()
+    fun provideCovidApi(retrofit: Retrofit): CovidNetworkAPI = retrofit.create()
 
 }
