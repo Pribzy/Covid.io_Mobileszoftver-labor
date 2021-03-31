@@ -16,9 +16,12 @@
         <activity android:name=".screen.country.list.CountryListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".screen.country.details.CountryDetailsActivity">
+        </activity>
+        <activity android:name=".screen.new_case.NewCaseActivity">
         </activity>
     </application>
 
