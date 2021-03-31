@@ -5,6 +5,7 @@ import co.zsmb.rainbowcake.dagger.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import hu.bme.aut.pribelszki.covidio.screen.new_case.NewCaseViewModel
 import hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed.CountryDetailsConfirmedViewModel
 import hu.bme.aut.pribelszki.covidio.screen.country.details.death.CountryDetailsDeathViewModel
 import hu.bme.aut.pribelszki.covidio.screen.country.details.overall.CountryDetailsOverallViewModel
@@ -31,4 +32,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CountryDetailsConfirmedViewModel::class)
     abstract fun bindCountryDetailsConfirmedViewModel(countryListViewModel: CountryDetailsConfirmedViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NewCaseViewModel::class)
+    abstract fun bindnewCaseViewModel(countryListViewModel: NewCaseViewModel): ViewModel
 }
