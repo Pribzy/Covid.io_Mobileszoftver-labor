@@ -11,8 +11,8 @@ class CountryListPresenter @Inject constructor(
         return countryListInteractor.getCountries()
     }
 
-    suspend fun healCountry(countryId: String) {
-        countryListInteractor.healCountry(countryId)
+    suspend fun healCountry(countryName: String) {
+        countryListInteractor.healCountry(countryName)
     }
 
     suspend fun addFavourite() {
