@@ -60,6 +60,20 @@ paths:
         '200':
           description: Country healed.
       description: Heal a country.
+  /cases:
+    post:
+      summary: Add new case
+      operationId: post-cases
+      responses:
+        '200':
+          description: Case added.
+      description: Create a new COVID case.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCase'
+        description: The newly created case.
 components:
   schemas:
     CountryStatus:
