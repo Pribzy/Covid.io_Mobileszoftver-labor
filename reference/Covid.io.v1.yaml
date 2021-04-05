@@ -188,3 +188,24 @@ components:
               TotalRecovered: 51885
               Date: '2021-04-05T14:19:20.553Z'
               Premium: {}
+    NewCase:
+      title: NewCase
+      type: object
+      description: Model for creating a new case.
+      properties:
+        name:
+          type: string
+        gender:
+          type: string
+          enum:
+            - male
+            - female
+            - other
+        age:
+          type: number
+        status:
+          type: string
+          enum:
+            - death
+            - recovered
+            - confirmed
