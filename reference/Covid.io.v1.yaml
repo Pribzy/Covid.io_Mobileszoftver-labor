@@ -23,6 +23,28 @@ paths:
                 $ref: '#/components/schemas/CovidCases'
       operationId: get-summary
       description: Return with every COVID cases in countries.
+  '/total/dayone/country/{countryName}':
+    get:
+      summary: Get historical cases
+      tags: []
+      responses:
+        '200':
+          description: List of historical numbers in order.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CountryStatus'
+      operationId: get-total-dayone-country
+      description: Return with every historical cases of a country.
+    parameters:
+      - schema:
+          type: string
+        name: countryName
+        in: path
+        required: true
+        description: The short name of the country (slug).
 components:
   schemas:
     CountryStatus:
