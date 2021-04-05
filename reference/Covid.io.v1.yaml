@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Covid.io.v1
+  version: '1.0'
+  description: The API description of COVID-19 API.
+  contact:
+    name: Levente Pribelszki
+    email: pribelszkilevi@gmail.com
+servers:
+  - url: 'https://api.covid19api.com/'
+    description: Official COVID-19 API
+paths:
+  /summary:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-summary
+components:
+  schemas:
+    CountryStatus:
+      description: Represents a country's status.
+      type: object
+      x-examples:
+        example country status:
+          Country: South Africa
+          CountryCode: ''
+          Province: ''
+          City: ''
+          CityCode: ''
+          Lat: '0'
+          Lon: '0'
+          Confirmed: 1
+          Deaths: 0
+          Recovered: 0
+          Active: 1
+          Date: '2020-03-05T00:00:00Z'
+      properties:
+        Country:
+          type: string
+          description: The country's name.
+        CountryCode:
+          type: string
+        Province:
+          type: string
+        City:
+          type: string
+        CityCode:
+          type: string
+        Lat:
+          type: string
+        Lon:
+          type: string
+        Confirmed:
+          type: number
+          description: Total confirmed count.
+        Deaths:
+          type: number
+          description: Total death count.
+        Recovered:
+          type: number
+          description: Total recovered count.
+        Active:
+          type: number
+          description: Total active count.
+        Date:
+          type: string
+          format: date-time
+      required:
+        - Country
+        - Confirmed
+        - Deaths
+        - Recovered
+        - Active
+        - Date
