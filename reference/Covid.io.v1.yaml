@@ -7,13 +7,12 @@ info:
     name: Levente Pribelszki
     email: pribelszkilevi@gmail.com
 servers:
-  - url: 'https://api.covid19api.com/'
+  - url: 'https://api.covid19api.com'
     description: Official COVID-19 API
 paths:
   /summary:
     get:
       summary: Get all cases
-      tags: []
       responses:
         '200':
           description: Global cases and list of country cases.
@@ -23,10 +22,13 @@ paths:
                 $ref: '#/components/schemas/CovidCases'
       operationId: get-summary
       description: Return with every COVID cases in countries.
+      tags:
+        - Country
   '/total/dayone/country/{countryName}':
     get:
       summary: Get historical cases
-      tags: []
+      tags:
+        - Country
       responses:
         '200':
           description: List of historical numbers in order.
@@ -60,6 +62,8 @@ paths:
         '200':
           description: Country healed.
       description: Heal a country.
+      tags:
+        - Country
   /cases:
     post:
       summary: Add new case
@@ -74,6 +78,8 @@ paths:
             schema:
               $ref: '#/components/schemas/NewCase'
         description: The newly created case.
+      tags:
+        - Case
 components:
   schemas:
     CountryStatus:
@@ -267,3 +273,6 @@ components:
             - death
             - recovered
             - confirmed
+tags:
+  - name: Case
+  - name: Country
