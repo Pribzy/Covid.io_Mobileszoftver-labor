@@ -12,8 +12,8 @@ interface CovidNetworkAPI {
     @GET("/total/dayone/country/{countryName}")
     suspend fun getCountryStatuses(@Path("countryName") countryName: String): List<CountryStatus>
 
-    @DELETE("/countries/{countryId}")
-    suspend fun healCountry(@Path("countryId") countryId: String)
+    @DELETE("/countries/{countryName}")
+    suspend fun healCountry(@Path("countryName") countryName: String)
 
     @POST("/cases")
     suspend fun addCase(case: NewCase)

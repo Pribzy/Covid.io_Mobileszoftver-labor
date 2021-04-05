@@ -16,8 +16,8 @@ class CountryListViewModel @Inject constructor(
         }
     }
 
-    fun healCountry(countryId: String) = execute {
-        countryListPresenter.healCountry(countryId)
+    fun healCountry(countryName: String) = execute {
+        countryListPresenter.healCountry(countryName)
     }
 
     suspend fun addFavourite() = execute {
