@@ -12,10 +12,17 @@ servers:
 paths:
   /summary:
     get:
-      summary: Your GET endpoint
+      summary: Get all cases
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: Global cases and list of country cases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CovidCases'
       operationId: get-summary
+      description: Return with every COVID cases in countries.
 components:
   schemas:
     CountryStatus:
