@@ -45,6 +45,21 @@ paths:
         in: path
         required: true
         description: The short name of the country (slug).
+  '/countries/{countryName}':
+    parameters:
+      - schema:
+          type: string
+        name: countryName
+        in: path
+        required: true
+        description: The short name of the country (slug).
+    delete:
+      summary: Heal country
+      operationId: delete-countries-countryName
+      responses:
+        '200':
+          description: Country healed.
+      description: Heal a country.
 components:
   schemas:
     CountryStatus:
