@@ -5,11 +5,11 @@ import javax.inject.Inject
 class FavouriteDataSource @Inject constructor(
     private val favourtieDAO: FavourtieDAO
 ) {
-    suspend fun addFavourite() {
-         favourtieDAO.addFavourite()
+    suspend fun addFavourite(favouriteCountry: FavouriteCountry) {
+         favourtieDAO.addFavourite(favouriteCountry)
     }
 
-    suspend fun removeFavourite() {
-        favourtieDAO.removeFavourite()
+    suspend fun removeFavourite(deletedCountry: FavouriteCountry) {
+        favourtieDAO.removeFavourite(deletedCountry)
     }
 }
