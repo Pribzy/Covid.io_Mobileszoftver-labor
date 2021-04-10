@@ -16,5 +16,5 @@ interface CovidNetworkAPI {
     suspend fun healCountry(@Path("countryName") countryName: String)
 
     @POST("/cases")
-    suspend fun addCase(case: NewCase)
+    suspend fun addCase(@Body case: NewCase)
 }

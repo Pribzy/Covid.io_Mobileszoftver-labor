@@ -2,6 +2,7 @@ package hu.bme.aut.pribelszki.covidio.network
 
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,9 +15,10 @@ class CovidModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        .build()
+    fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(interceptor)
+            .build()
 
     @Provides
     @Singleton
@@ -30,4 +32,7 @@ class CovidModule {
     @Singleton
     fun provideCovidApi(retrofit: Retrofit): CovidNetworkAPI = retrofit.create()
 
+    @Provides
+    @Singleton
+    fun provideMockNetworkInterceptor(): Interceptor = MockNetworkInterceptor()
 }

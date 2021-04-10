@@ -5,6 +5,7 @@ import android.view.View
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import hu.bme.aut.pribelszki.covidio.R
+import hu.bme.aut.pribelszki.covidio.network.model.NewCase
 
 class NewCaseFragment: RainbowCakeFragment<NewCaseViewState, NewCaseViewModel>() {
 
@@ -14,6 +15,7 @@ class NewCaseFragment: RainbowCakeFragment<NewCaseViewState, NewCaseViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.addCase(NewCase("Levi", "something",12,"created"))
     }
 
     override fun render(viewState: NewCaseViewState) {
