@@ -2,6 +2,7 @@ package hu.bme.aut.pribelszki.covidio.domain
 
 import hu.bme.aut.pribelszki.covidio.network.NetworkDatasource
 import hu.bme.aut.pribelszki.covidio.network.model.CovidCases
+import hu.bme.aut.pribelszki.covidio.room.FavouriteCountry
 import hu.bme.aut.pribelszki.covidio.room.FavouriteDataSource
 import javax.inject.Inject
 
@@ -17,11 +18,11 @@ class CountryListInteractor @Inject constructor(
         networkDataSource.healCountry(countryName)
     }
 
-    suspend fun addFavourite() {
-        favouriteDataSource.addFavourite()
+    suspend fun addFavourite(newCountry: FavouriteCountry) {
+        favouriteDataSource.addFavourite(newCountry)
     }
 
-    suspend fun removeFavourite() {
-        favouriteDataSource.removeFavourite()
+    suspend fun removeFavourite(deletedCountry: FavouriteCountry) {
+        favouriteDataSource.removeFavourite(deletedCountry)
     }
 }
