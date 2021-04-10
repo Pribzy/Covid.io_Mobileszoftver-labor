@@ -30,11 +30,11 @@ class CovidModule {
 
     @Provides
     @Singleton
-    fun provideCovidApi(retrofit: Retrofit): CovidNetworkAPI = retrofit.create()
+    fun provideCovidApi(retrofit: Retrofit): CovidAPI = retrofit.create()
 
     @Provides
     @Singleton
-    fun provideMockCovidApi(): MockCovidNetworkAPI = MockCovidNetworkAPIImplementations()
+    fun provideMockCovidApi(): MockCovidAPI = MockCovidAPIImpl()
 
     @Provides
     @Singleton

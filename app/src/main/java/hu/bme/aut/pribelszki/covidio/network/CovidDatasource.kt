@@ -6,21 +6,21 @@ import hu.bme.aut.pribelszki.covidio.network.model.NewCase
 import javax.inject.Inject
 
 class CovidDatasource @Inject constructor(
-    private val covidNetworkAPI: CovidNetworkAPI
+    private val covidAPI: CovidAPI
 ) {
     suspend fun getCountries(): CovidCases {
-        return covidNetworkAPI.getCases()
+        return covidAPI.getCases()
     }
 
     suspend fun healCountry(countryName: String) {
-        covidNetworkAPI.healCountry(countryName)
+        covidAPI.healCountry(countryName)
     }
 
     suspend fun getCountryStatuses(countryName: String): List<CountryStatus> {
-        return covidNetworkAPI.getCountryStatuses(countryName)
+        return covidAPI.getCountryStatuses(countryName)
     }
 
     suspend fun addCase(newCase: NewCase) {
-        covidNetworkAPI.addCase(newCase)
+        covidAPI.addCase(newCase)
     }
 }

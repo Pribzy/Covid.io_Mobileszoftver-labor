@@ -2,9 +2,9 @@ package hu.bme.aut.pribelszki.covidio.network
 
 import hu.bme.aut.pribelszki.covidio.network.model.*
 
-interface  MockCovidNetworkAPI: CovidNetworkAPI {}
+interface MockCovidAPI: CovidAPI {}
 
-class MockCovidNetworkAPIImplementations: MockCovidNetworkAPI {
+class MockCovidAPIImpl: MockCovidAPI {
     override suspend fun getCases(): CovidCases {
         val globalCases = GlobalCases(1, 1, 1, 1, 1, 1, "2021.04.12")
         val countryCase = CountryCase("country_id", "country", "CC", "C", 1, 1, 1, 1, 1, 1, "2021.04.12", Empty())
