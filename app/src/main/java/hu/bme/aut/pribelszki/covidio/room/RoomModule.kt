@@ -10,10 +10,7 @@ import javax.inject.Singleton
 class RoomModule {
     @Singleton
     @Provides
-    fun providesRoomDatabase(context: Context): FavouriteDatabase = Room.databaseBuilder(
-            context.applicationContext, FavouriteDatabase::class.java, "favourites_database")
-    .fallbackToDestructiveMigration()
-    .build()
+    fun providesRoomDatabase(context: Context): FavouriteDatabase = FavouriteDatabase.getInstance(context)
 
     @Singleton
     @Provides

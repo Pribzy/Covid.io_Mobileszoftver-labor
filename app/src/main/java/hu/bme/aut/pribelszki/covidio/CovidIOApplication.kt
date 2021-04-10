@@ -7,6 +7,7 @@ import co.zsmb.rainbowcake.dagger.RainbowCakeApplication
 import co.zsmb.rainbowcake.dagger.RainbowCakeComponent
 import co.zsmb.rainbowcake.timber.TIMBER
 import hu.bme.aut.pribelszki.covidio.di.AppComponent
+import hu.bme.aut.pribelszki.covidio.di.ApplicationModule
 import timber.log.Timber
 import hu.bme.aut.pribelszki.covidio.di.DaggerAppComponent
 
@@ -16,7 +17,7 @@ class CovidIOApplication: RainbowCakeApplication() {
 
     override fun setupInjector() {
         // TODO: Somehow the .create() method doesn't work. Fix in the future
-        injector = DaggerAppComponent.builder().build()
+        injector = DaggerAppComponent.builder().applicationModule(ApplicationModule(this)).build()
     }
 
     override fun onCreate() {
