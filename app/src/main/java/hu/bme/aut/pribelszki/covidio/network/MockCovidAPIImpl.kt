@@ -1,6 +1,7 @@
 package hu.bme.aut.pribelszki.covidio.network
 
 import hu.bme.aut.pribelszki.covidio.network.model.*
+import timber.log.Timber
 
 class MockCovidAPIImpl: MockCovidAPI {
     override suspend fun getCases(): CovidCases {
@@ -14,8 +15,12 @@ class MockCovidAPIImpl: MockCovidAPI {
         return listOf(countryStatus)
     }
 
-    override suspend fun healCountry(countryName: String) { }
+    override suspend fun healCountry(countryName: String) {
+        Timber.tag("Country healed:").v(countryName)
+    }
 
-    override suspend fun addCase(case: NewCase) { }
+    override suspend fun addCase(case: NewCase) {
+        Timber.tag("New case added:").v(case.toString())
+    }
 
 }

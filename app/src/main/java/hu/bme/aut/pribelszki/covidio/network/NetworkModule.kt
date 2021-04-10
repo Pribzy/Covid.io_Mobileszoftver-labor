@@ -12,7 +12,6 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-
     @Provides
     @Singleton
     fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient = OkHttpClient.Builder()
@@ -23,10 +22,10 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.covid19api.com/")
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
+            .baseUrl("https://api.covid19api.com/")
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
 
     @Provides
     @Singleton
