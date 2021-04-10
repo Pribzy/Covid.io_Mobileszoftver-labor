@@ -11,7 +11,7 @@ import retrofit2.create
 import javax.inject.Singleton
 
 @Module
-class CovidModule {
+class NetworkModule {
 
     @Provides
     @Singleton

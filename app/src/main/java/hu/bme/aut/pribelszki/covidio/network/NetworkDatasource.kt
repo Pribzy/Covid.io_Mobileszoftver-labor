@@ -5,7 +5,7 @@ import hu.bme.aut.pribelszki.covidio.network.model.CovidCases
 import hu.bme.aut.pribelszki.covidio.network.model.NewCase
 import javax.inject.Inject
 
-class CovidDatasource @Inject constructor(
+class NetworkDatasource @Inject constructor(
     private val covidAPI: CovidAPI
 ) {
     suspend fun getCountries(): CovidCases {
