@@ -1,6 +1,5 @@
 package hu.bme.aut.pribelszki.covidio.room
 
-import android.util.Log
 import timber.log.Timber
 
 class FavouriteMockDAOImpl: FavouriteMockDAO {
