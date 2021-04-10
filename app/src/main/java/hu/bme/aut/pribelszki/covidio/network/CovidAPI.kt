@@ -5,7 +5,7 @@ import hu.bme.aut.pribelszki.covidio.network.model.CovidCases
 import hu.bme.aut.pribelszki.covidio.network.model.NewCase
 import retrofit2.http.*
 
-interface CovidNetworkAPI {
+interface CovidAPI {
     @GET("/summary")
     suspend fun getCases(): CovidCases
 
@@ -16,5 +16,5 @@ interface CovidNetworkAPI {
     suspend fun healCountry(@Path("countryName") countryName: String)
 
     @POST("/cases")
-    suspend fun addCase(case: NewCase)
+    suspend fun addCase(@Body case: NewCase)
 }

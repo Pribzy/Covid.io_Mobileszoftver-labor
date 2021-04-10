@@ -2,6 +2,7 @@ package hu.bme.aut.pribelszki.covidio.network
 
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,13 +11,14 @@ import retrofit2.create
 import javax.inject.Singleton
 
 @Module
-class CovidModule {
+class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        .build()
+    fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(interceptor)
+            .build()
 
     @Provides
     @Singleton
@@ -28,6 +30,13 @@ class CovidModule {
 
     @Provides
     @Singleton
-    fun provideCovidApi(retrofit: Retrofit): CovidNetworkAPI = retrofit.create()
+    fun provideCovidApi(retrofit: Retrofit): CovidAPI = retrofit.create()
 
+    @Provides
+    @Singleton
+    fun provideMockCovidApi(): MockCovidAPI = MockCovidAPIImpl()
+
+    @Provides
+    @Singleton
+    fun provideMockNetworkInterceptor(): Interceptor = MockNetworkInterceptor()
 }

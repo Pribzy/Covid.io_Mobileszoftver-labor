@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [FavouriteCountry::class], version = 2)
+@Database(entities = [FavouriteCountry::class], version = 1)
 abstract class FavouriteDatabase : RoomDatabase() {
     abstract fun favouriteDao(): FavourtieDAO
 
@@ -16,12 +16,12 @@ abstract class FavouriteDatabase : RoomDatabase() {
         fun getInstance(context: Context): FavouriteDatabase {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
-                    context.applicationContext,
-                    FavouriteDatabase::class.java, "grade_database"
+                        context,
+                        FavouriteDatabase::class.java, "favourites_database"
                 )
-                    .fallbackToDestructiveMigration()
-                    .build()
-                    .also { INSTANCE = it }
+                        .fallbackToDestructiveMigration()
+                        .build()
+                        .also { INSTANCE = it }
             }
         }
     }

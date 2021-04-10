@@ -70,7 +70,11 @@ paths:
       operationId: post-cases
       responses:
         '200':
-          description: Case added.
+          description: Created case.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewCase'
       description: Create a new COVID case.
       requestBody:
         content:
