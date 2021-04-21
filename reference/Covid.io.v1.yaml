@@ -1,0 +1,282 @@
+openapi: 3.0.0
+info:
+  title: Covid.io.v1
+  version: '1.0'
+  description: The API description of COVID-19 API.
+  contact:
+    name: Levente Pribelszki
+    email: pribelszkilevi@gmail.com
+servers:
+  - url: 'https://api.covid19api.com'
+    description: Official COVID-19 API
+paths:
+  /summary:
+    get:
+      summary: Get all cases
+      responses:
+        '200':
+          description: Global cases and list of country cases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CovidCases'
+      operationId: get-summary
+      description: Return with every COVID cases in countries.
+      tags:
+        - Country
+  '/total/dayone/country/{countryName}':
+    get:
+      summary: Get historical cases
+      tags:
+        - Country
+      responses:
+        '200':
+          description: List of historical numbers in order.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CountryStatus'
+      operationId: get-total-dayone-country
+      description: Return with every historical cases of a country.
+    parameters:
+      - schema:
+          type: string
+        name: countryName
+        in: path
+        required: true
+        description: The short name of the country (slug).
+  '/countries/{countryName}':
+    parameters:
+      - schema:
+          type: string
+        name: countryName
+        in: path
+        required: true
+        description: The short name of the country (slug).
+    delete:
+      summary: Heal country
+      operationId: delete-countries-countryName
+      responses:
+        '200':
+          description: Country healed.
+      description: Heal a country.
+      tags:
+        - Country
+  /cases:
+    post:
+      summary: Add new case
+      operationId: post-cases
+      responses:
+        '200':
+          description: Created case.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewCase'
+      description: Create a new COVID case.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCase'
+        description: The newly created case.
+      tags:
+        - Case
+components:
+  schemas:
+    CountryStatus:
+      description: Represents a country's status.
+      type: object
+      x-examples:
+        example country status:
+          Country: South Africa
+          CountryCode: ''
+          Province: ''
+          City: ''
+          CityCode: ''
+          Lat: '0'
+          Lon: '0'
+          Confirmed: 1
+          Deaths: 0
+          Recovered: 0
+          Active: 1
+          Date: '2020-03-05T00:00:00Z'
+      properties:
+        Country:
+          type: string
+          description: The country's name.
+        CountryCode:
+          type: string
+        Province:
+          type: string
+        City:
+          type: string
+        CityCode:
+          type: string
+        Lat:
+          type: string
+        Lon:
+          type: string
+        Confirmed:
+          type: number
+          description: Total confirmed count.
+        Deaths:
+          type: number
+          description: Total death count.
+        Recovered:
+          type: number
+          description: Total recovered count.
+        Active:
+          type: number
+          description: Total active count.
+        Date:
+          type: string
+          format: date-time
+      required:
+        - Country
+    CountryCase:
+      description: Represents an standalone case of a country.
+      type: object
+      x-examples:
+        example country case:
+          ID: 82dd1b35-c8c6-4383-96d1-210d8162f091
+          Country: Afghanistan
+          CountryCode: AF
+          Slug: afghanistan
+          NewConfirmed: 0
+          TotalConfirmed: 56676
+          NewDeaths: 0
+          TotalDeaths: 2497
+          NewRecovered: 0
+          TotalRecovered: 51885
+          Date: '2021-04-05T14:19:20.553Z'
+          Premium: {}
+      properties:
+        ID:
+          type: string
+          description: Unique identifier of a case.
+        Country:
+          type: string
+        CountryCode:
+          type: string
+        Slug:
+          type: string
+          description: The short name of a country. It can be used as ID in requests.
+        NewConfirmed:
+          type: number
+        TotalConfirmed:
+          type: number
+        NewDeaths:
+          type: number
+        TotalDeaths:
+          type: number
+        NewRecovered:
+          type: number
+        TotalRecovered:
+          type: number
+        Date:
+          type: string
+          format: date-time
+        Premium:
+          type: object
+          description: For premium users it contains premium data.
+      required:
+        - ID
+        - Slug
+    GlobalCases:
+      description: Represents the global numbers.
+      type: object
+      x-examples:
+        example global cases:
+          NewConfirmed: 269224
+          TotalConfirmed: 131148634
+          NewDeaths: 3744
+          TotalDeaths: 2850810
+          NewRecovered: 135834
+          TotalRecovered: 74458071
+          Date: '2021-04-05T14:19:20.553Z'
+      properties:
+        NewConfirmed:
+          type: number
+        TotalConfirmed:
+          type: number
+        NewDeaths:
+          type: number
+        TotalDeaths:
+          type: number
+        NewRecovered:
+          type: number
+        TotalRecovered:
+          type: number
+        Date:
+          type: string
+          format: date-time
+    CovidCases:
+      title: CovidCases
+      type: object
+      description: Represents all of t he available data aboout cases.
+      properties:
+        ID:
+          type: string
+          description: The unique identifier of covid cases.
+        Message:
+          type: string
+        Global:
+          $ref: '#/components/schemas/GlobalCases'
+        Countries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CountryCase'
+      required:
+        - ID
+      x-examples:
+        example covid cases:
+          ID: 4444f8fb-a986-4ff2-be9c-19f8efb4c4e8
+          Message: ''
+          Global:
+            NewConfirmed: 269224
+            TotalConfirmed: 131148634
+            NewDeaths: 3744
+            TotalDeaths: 2850810
+            NewRecovered: 135834
+            TotalRecovered: 74458071
+            Date: '2021-04-05T14:19:20.553Z'
+          Countries:
+            - ID: 82dd1b35-c8c6-4383-96d1-210d8162f091
+              Country: Afghanistan
+              CountryCode: AF
+              Slug: afghanistan
+              NewConfirmed: 0
+              TotalConfirmed: 56676
+              NewDeaths: 0
+              TotalDeaths: 2497
+              NewRecovered: 0
+              TotalRecovered: 51885
+              Date: '2021-04-05T14:19:20.553Z'
+              Premium: {}
+    NewCase:
+      title: NewCase
+      type: object
+      description: Model for creating a new case.
+      properties:
+        name:
+          type: string
+        gender:
+          type: string
+          enum:
+            - male
+            - female
+            - other
+        age:
+          type: number
+        status:
+          type: string
+          enum:
+            - death
+            - recovered
+            - confirmed
+tags:
+  - name: Case
+  - name: Country

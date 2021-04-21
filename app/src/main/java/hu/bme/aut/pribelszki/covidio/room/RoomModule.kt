@@ -9,9 +9,13 @@ import javax.inject.Singleton
 class RoomModule {
     @Singleton
     @Provides
-    fun providesRoomDatabase(context: Context): FavouriteDatabase  = FavouriteDatabase.getInstance(context)
+    fun providesRoomDatabase(context: Context): FavouriteDatabase = FavouriteDatabase.getInstance(context)
 
     @Singleton
     @Provides
     fun providesFavouriteDAO(favouriteDatabase: FavouriteDatabase) = favouriteDatabase.favouriteDao()
+
+    @Singleton
+    @Provides
+    fun providesMockFavouriteDAO(): FavouriteMockDAO = FavouriteMockDAOImpl()
 }

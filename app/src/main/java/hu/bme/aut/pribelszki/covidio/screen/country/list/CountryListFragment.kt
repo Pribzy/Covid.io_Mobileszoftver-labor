@@ -17,6 +17,7 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loadCases()
     }
 
     override fun render(viewState: CountryListViewState) {
