@@ -12,3 +12,4 @@ A covid.io alkalmazás segítségével a felhasználók nyomon követhetik a pan
 | 03.16      | Specifikáció | - |
 | 03.30      | Archetektúra és környezet      |   [v0.1](https://github.com/Pribzy/Covid.io_Mobileszoftver-labor/tree/final/architecture-skeleton) |
 | 04.13      | Hálózat és adatbázis      |  [v0.2](https://github.com/Pribzy/Covid.io_Mobileszoftver-labor/tree/final/network-persistence-layer)|
+| 04.27      | Alkalmazás és tesztek      |  Soon|
