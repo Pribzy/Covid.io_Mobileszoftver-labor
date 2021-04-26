@@ -1,147 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/countryDetailsConstraintLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@id/starImageButton">
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/countryNameTextView"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/countryDetailsConstraintLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="Hungary"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/starImageButton"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/countryNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Hungary" />
+
+            <TextView
+                android:id="@+id/countryCodeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/countryNameTextView"
+                app:layout_constraintStart_toEndOf="@+id/countryNameTextView"
+                app:layout_constraintTop_toTopOf="@+id/countryNameTextView"
+                tools:text="(HU)" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/starImageButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/countryDetailsConstraintLayout">
+
+            <ImageView
+                android:id="@+id/confirmedImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/virus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/virusRed" />
+
+            <TextView
+                android:id="@+id/confirmedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/virusRed"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/confirmedImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="12" />
+
+            <ImageView
+                android:id="@+id/recoveredImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/syringe"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/confirmedTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/recoveredBlue" />
+
+            <TextView
+                android:id="@+id/recoveredTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/recoveredBlue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/recoveredImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="54" />
+
+            <ImageView
+                android:id="@+id/deathImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/human_skull"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/recoveredTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/deathGrey" />
+
+            <TextView
+                android:id="@+id/deathTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/deathGrey"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/deathImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3465" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/starImageButton"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/star_outline"
+            android:backgroundTint="@color/lightGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/rightChevron"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/countryCodeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            tools:text="(HU)"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/countryNameTextView"
-            app:layout_constraintStart_toEndOf="@+id/countryNameTextView"
-            app:layout_constraintTop_toTopOf="@+id/countryNameTextView" />
+        <ImageView
+            android:id="@+id/rightChevron"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/chevron"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/lightGrey" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countryDetailsConstraintLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/starImageButton"
-        android:layout_marginEnd="16dp">
-
-        <ImageView
-            android:id="@+id/confirmedImageView"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:src="@drawable/virus"
-            app:tint="@color/virusRed"/>
-
-        <TextView
-            android:id="@+id/confirmedTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="12"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/confirmedImageView"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/virusRed"/>
-
-        <ImageView
-            android:id="@+id/recoveredImageView"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:layout_constraintStart_toEndOf="@id/confirmedTextView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/syringe"
-            app:tint="@color/recoveredBlue"
-            />
-
-        <TextView
-            android:id="@+id/recoveredTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="54"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/recoveredImageView"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/recoveredBlue"
-            />
-
-        <ImageView
-            android:id="@+id/deathImageView"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:layout_constraintStart_toEndOf="@id/recoveredTextView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="8dp"
-            app:tint="@color/deathGrey"
-            android:src="@drawable/human_skull"/>
-
-        <TextView
-            android:id="@+id/deathTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="3465"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/deathImageView"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/deathGrey"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageButton
-        android:id="@+id/starImageButton"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:background="@drawable/star_outline"
-        android:backgroundTint="@color/lightGrey"
-        app:layout_constraintEnd_toStartOf="@id/rightChevron"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <ImageView
-        android:id="@+id/rightChevron"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:src="@drawable/chevron"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:tint="@color/lightGrey"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

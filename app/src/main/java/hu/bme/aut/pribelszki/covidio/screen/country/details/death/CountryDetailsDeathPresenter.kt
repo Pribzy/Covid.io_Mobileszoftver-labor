@@ -10,6 +10,6 @@ class CountryDetailsDeathPresenter @Inject constructor(
     private val countryDetailsInteractor: CountryDetailsInteractor
 ) {
     suspend fun getDeathStatuses(countryName: String): List<CountryStatus> = withIOContext {
-        countryDetailsInteractor.getCountryStatuses(countryName, StatusType.death)
+        countryDetailsInteractor.getCountryStatuses(countryName, StatusType.Death)
     }
 }
