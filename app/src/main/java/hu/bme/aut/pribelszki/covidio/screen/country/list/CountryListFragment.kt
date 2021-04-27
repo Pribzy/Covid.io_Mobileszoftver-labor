@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
@@ -28,6 +29,18 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
         adapter.listener = this
         countryListRecyclerView.adapter = adapter
         viewModel.loadCases()
+
+        magnifierImageButton.setOnClickListener {
+            searchingLayout.isGone = false
+            titleLayout.isGone = true
+        }
+
+        searchView.setOnQueryTextFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                searchingLayout.isGone = true
+                titleLayout.isGone = false
+            }
+        }
     }
 
     override fun render(viewState: CountryListViewState) {
@@ -38,6 +51,7 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
                 adapter.submitList(viewState.countryList)
                 adapter.notifyDataSetChanged()
             }
+
         }
     }
 

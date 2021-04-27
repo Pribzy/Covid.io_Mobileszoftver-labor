@@ -8,6 +8,8 @@ object Initial : CountryListViewState()
 
 object Loading : CountryListViewState()
 
+object Searching : CountryListViewState()
+
 object NetworkError: CountryListViewState()
 
 data class DataReady(val countryList: List<CountryListItem>) : CountryListViewState()
