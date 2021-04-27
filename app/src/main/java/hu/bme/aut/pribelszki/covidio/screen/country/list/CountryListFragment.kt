@@ -9,6 +9,7 @@ import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import co.zsmb.rainbowcake.extensions.exhaustive
 import hu.bme.aut.pribelszki.covidio.R
+import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
 import hu.bme.aut.pribelszki.covidio.screen.country.list.adapter.CountryListAdapter
 import kotlinx.android.synthetic.main.fragment_country_list.*
 
@@ -35,11 +36,16 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
             is DataReady -> {
                 loadingAnimation.isVisible = false
                 adapter.submitList(viewState.countryList)
+                adapter.notifyDataSetChanged()
             }
         }
     }
 
-    override fun onItemSelected(shareName: String) {
-        // TODO("Not yet implemented")
+    override fun onItemSelected(item: CountryListItem) {
+
+    }
+
+    override fun onFavouriteTapped(item: CountryListItem, isFavourite: Boolean) {
+        if (isFavourite) viewModel.addFavourite(item) else viewModel.removeFavourite(item)
     }
 }

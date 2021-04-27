@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "favourites")
 class FavouriteCountry(
-    @PrimaryKey(autoGenerate = true) var countryId: Long?,
+    @PrimaryKey var id: String,
     @ColumnInfo(name = "countryName") var countryName: String
 )

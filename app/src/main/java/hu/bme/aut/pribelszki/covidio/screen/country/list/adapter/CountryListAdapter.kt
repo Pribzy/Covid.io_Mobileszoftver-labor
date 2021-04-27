@@ -9,16 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.pribelszki.covidio.R
-import hu.bme.aut.pribelszki.covidio.screen.country.list.model.CountryListPresentationModel
+import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
 import kotlinx.android.synthetic.main.recyclerview_country_item.view.*
+import timber.log.Timber
 
 class CountryListAdapter(val context: Context) :
-    ListAdapter<CountryListPresentationModel, CountryListAdapter.ViewHolder>(CountryListComparator) {
+    ListAdapter<CountryListItem, CountryListAdapter.ViewHolder>(CountryListComparator) {
 
     var listener: Listener? = null
 
     interface Listener {
-        fun onItemSelected(shareName: String)
+        fun onItemSelected(item: CountryListItem)
+        fun onFavouriteTapped(item: CountryListItem, isFavourite: Boolean)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -51,6 +53,18 @@ class CountryListAdapter(val context: Context) :
         val recoveredCount: TextView = itemView.recoveredTextView
         val deathCount: TextView = itemView.deathTextView
         val starImageButton: ImageButton = itemView.starImageButton
-        var item: CountryListPresentationModel? = null
+        var item: CountryListItem? = null
+
+        init {
+            itemView.setOnClickListener {
+                item?.let { listener?.onItemSelected(it) }
+                Timber.d("Adapter itemSelected")
+            }
+
+            starImageButton.setOnClickListener {
+                item?.let { listener?.onFavouriteTapped(it, !it.isFavourite) }
+                Timber.d("Favourite selected")
+            }
+        }
     }
 }

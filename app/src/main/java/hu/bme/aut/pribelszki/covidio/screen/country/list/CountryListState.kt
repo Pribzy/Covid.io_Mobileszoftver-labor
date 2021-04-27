@@ -1,9 +1,6 @@
 package hu.bme.aut.pribelszki.covidio.screen.country.list
 
-import hu.bme.aut.pribelszki.covidio.network.model.CovidCases
-import hu.bme.aut.pribelszki.covidio.screen.country.list.model.CountryListPresentationModel
-import java.lang.Exception
-import kotlin.Error
+import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
 
 sealed class CountryListViewState
 
@@ -13,4 +10,4 @@ object Loading : CountryListViewState()
 
 object NetworkError: CountryListViewState()
 
-data class DataReady(val countryList: List<CountryListPresentationModel>) : CountryListViewState()
+data class DataReady(val countryList: List<CountryListItem>) : CountryListViewState()
