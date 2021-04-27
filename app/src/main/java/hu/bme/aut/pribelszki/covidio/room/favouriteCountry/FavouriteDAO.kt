@@ -1,4 +1,4 @@
-package hu.bme.aut.pribelszki.covidio.room
+package hu.bme.aut.pribelszki.covidio.room.favouriteCountry
 
 import androidx.room.Dao
 import androidx.room.Delete

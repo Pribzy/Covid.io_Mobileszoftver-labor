@@ -48,4 +48,8 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
     override fun onFavouriteTapped(item: CountryListItem, isFavourite: Boolean) {
         if (isFavourite) viewModel.addFavourite(item) else viewModel.removeFavourite(item)
     }
+
+    override fun onHealTapped(item: CountryListItem) {
+        viewModel.healCountry(item)
+    }
 }

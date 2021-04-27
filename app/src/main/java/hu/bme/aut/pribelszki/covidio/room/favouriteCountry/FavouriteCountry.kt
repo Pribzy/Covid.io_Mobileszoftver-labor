@@ -1,4 +1,4 @@
-package hu.bme.aut.pribelszki.covidio.room
+package hu.bme.aut.pribelszki.covidio.room.favouriteCountry
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity
