@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.pribelszki.covidio.R
 import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
+import hu.bme.aut.pribelszki.covidio.util.toFormattedString
 import kotlinx.android.synthetic.main.recyclerview_country_item.view.*
 import timber.log.Timber
 
@@ -34,15 +35,14 @@ class CountryListAdapter(val context: Context) :
         return ViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.item = item
         holder.countryName.text = item.countryName
         holder.countryCode.text = "(${item.countryCode})"
-        holder.confirmedCount.text = item.confirmedCount.toString()
-        holder.recoveredCount.text = item.recoveredCount.toString()
-        holder.deathCount.text = item.deathCount.toString()
+        holder.confirmedCount.text = item.confirmedCount.toFormattedString()
+        holder.recoveredCount.text = item.recoveredCount.toFormattedString()
+        holder.deathCount.text = item.deathCount.toFormattedString()
         holder.starImageButton.setBackgroundResource(if (item.isFavourite) R.drawable.star_filled else R.drawable.star_outline)
     }
 
