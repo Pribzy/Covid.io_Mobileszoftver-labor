@@ -14,6 +14,12 @@ class CountryListPresenter @Inject constructor(
         countryListInteractor.getCountries()
     }
 
+    suspend fun getFilteredCountries(countryName: String): List<CountryListItem> = withIOContext {
+        countryListInteractor.getCountries().filter {
+            it.countryName.decapitalize().contains(countryName.decapitalize())
+        }
+    }
+
     suspend fun healCountry(healedCountry: HealedCountry) = withIOContext {
         countryListInteractor.healCountry(healedCountry)
     }

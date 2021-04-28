@@ -3,6 +3,7 @@ package hu.bme.aut.pribelszki.covidio.screen.country.list
 import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -30,16 +31,12 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
         countryListRecyclerView.adapter = adapter
         viewModel.loadCases()
 
+        setupSearchListeners()
+
         magnifierImageButton.setOnClickListener {
             searchingLayout.isGone = false
             titleLayout.isGone = true
-        }
-
-        searchView.setOnQueryTextFocusChangeListener { v, hasFocus ->
-            if (!hasFocus) {
-                searchingLayout.isGone = true
-                titleLayout.isGone = false
-            }
+            searchView.onActionViewExpanded()
         }
     }
 
@@ -51,7 +48,6 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
                 adapter.submitList(viewState.countryList)
                 adapter.notifyDataSetChanged()
             }
-
         }
     }
 
@@ -65,5 +61,28 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
 
     override fun onHealTapped(item: CountryListItem) {
         viewModel.healCountry(item)
+    }
+
+    private fun setupSearchListeners() {
+        searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                viewModel.loadCases()
+                searchingLayout.isGone = true
+                titleLayout.isGone = false
+            }
+        }
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                viewModel.loadFilteredCases(query)
+                return false
+            }
+
+        })
     }
 }
