@@ -10,6 +10,6 @@ class CountryDetailsConfirmedPresenter @Inject constructor(
     private val countryDetailsInteractor: CountryDetailsInteractor
 ) {
     suspend fun getConfirmedStatuses(countryName: String): List<CountryStatus> = withIOContext {
-        countryDetailsInteractor.getCountryStatuses(countryName, StatusType.confirmed)
+        countryDetailsInteractor.getCountryStatuses(countryName, StatusType.Confirmed)
     }
 }

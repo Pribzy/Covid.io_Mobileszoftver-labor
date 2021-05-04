@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/countryNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/buttonLinearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Hungary" />
+
+        <TextView
+            android:id="@+id/countryCodeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/lightGrey"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/buttonLinearLayout"
+            app:layout_constraintStart_toStartOf="@id/countryNameTextView"
+            app:layout_constraintTop_toBottomOf="@id/countryNameTextView"
+            tools:text="(HU)" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/countConstraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/buttonLinearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/countryCodeTextView">
+
+            <ImageView
+                android:id="@+id/confirmedImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/virus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/virusRed" />
+
+            <TextView
+                android:id="@+id/confirmedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/virusRed"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/confirmedImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="12" />
+
+            <ImageView
+                android:id="@+id/recoveredImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/syringe"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/confirmedTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/recoveredBlue" />
+
+            <TextView
+                android:id="@+id/recoveredTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/recoveredBlue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/recoveredImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="54" />
+
+            <ImageView
+                android:id="@+id/deathImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/human_skull"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/recoveredTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/deathGrey" />
+
+            <TextView
+                android:id="@+id/deathTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/deathGrey"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/deathImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3465" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/rightChevron"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/starImageButton"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginVertical="4dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/star_outline"
+                android:backgroundTint="@color/lightGrey" />
+
+            <ImageButton
+                android:id="@+id/healImageButton"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginVertical="4dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/cross_filled"
+                android:backgroundTint="@color/healRed" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/rightChevron"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/chevron"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/lightGrey" />
+
+        <TextView
+            android:id="@+id/healedDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/healDate"
+            android:textColor="@color/lightGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countConstraintLayout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
