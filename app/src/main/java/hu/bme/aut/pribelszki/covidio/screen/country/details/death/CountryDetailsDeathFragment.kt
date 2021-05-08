@@ -25,7 +25,10 @@ class CountryDetailsDeathFragment : RainbowCakeFragment<CountryDetailsDeathState
         super.onViewCreated(view, savedInstanceState)
         aaChartView = requireActivity().findViewById(R.id.deathsChartView)
         aaChartView.aa_drawChartWithChartModel(hu.bme.aut.pribelszki.covidio.screen.country.details.death.aaChartModel)
-        viewModel.loadStatus("hungary")
+        val countryId = activity?.intent?.getStringExtra("countryId")
+        if (countryId != null) {
+            viewModel.loadStatus(countryId)
+        }
     }
 
     override fun render(viewState: CountryDetailsDeathState) {

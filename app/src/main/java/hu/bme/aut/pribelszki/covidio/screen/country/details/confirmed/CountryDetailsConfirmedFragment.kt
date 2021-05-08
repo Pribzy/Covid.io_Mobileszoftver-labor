@@ -26,7 +26,10 @@ class CountryDetailsConfirmedFragment :
         super.onViewCreated(view, savedInstanceState)
         aaChartView = requireActivity().findViewById(R.id.confirmedChartView)
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
-        viewModel.loadStatus("hungary")
+        val countryId = activity?.intent?.getStringExtra("countryId")
+        if (countryId != null) {
+            viewModel.loadStatus(countryId)
+        }
     }
 
     override fun render(viewState: CountryDetailsConfirmedState) {

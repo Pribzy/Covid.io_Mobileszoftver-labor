@@ -56,6 +56,9 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
 
     override fun onItemSelected(item: CountryListItem) {
         val intent = Intent(context, CountryDetailsActivity::class.java)
+        intent.putExtra("countryName", item.countryName)
+        intent.putExtra("countryCode", item.countryCode)
+        intent.putExtra("countryId", item.countryIdentifier)
         startActivity(intent)
     }
 

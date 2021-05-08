@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import hu.bme.aut.pribelszki.covidio.R
 import hu.bme.aut.pribelszki.covidio.screen.country.details.adapter.ViewPagerAdapter
+import kotlinx.android.synthetic.main.activity_country_details.*
 
 class CountryDetailsActivity : AppCompatActivity() {
     var tabLayout: TabLayout? = null
@@ -13,6 +14,14 @@ class CountryDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_country_details)
+        val countryName = intent.getStringExtra("countryName")
+        val countryCode = intent.getStringExtra("countryCode")
+        toolbarTextView.text = "${countryName} (${countryCode})"
+
+        backButton.setOnClickListener {
+            super.onBackPressed()
+        }
+
         setupTabLayout()
     }
 
