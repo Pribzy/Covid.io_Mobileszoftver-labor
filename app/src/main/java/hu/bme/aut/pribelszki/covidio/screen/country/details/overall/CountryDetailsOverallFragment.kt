@@ -2,12 +2,9 @@ package hu.bme.aut.pribelszki.covidio.screen.country.details.overall
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
-import co.zsmb.rainbowcake.extensions.exhaustive
 import hu.bme.aut.pribelszki.covidio.R
-import kotlinx.android.synthetic.main.fragment_country_list.*
 
 class CountryDetailsOverallFragment: RainbowCakeFragment<CountryDetailsOverallState, CountryDetailsOverallViewModel>() {
 

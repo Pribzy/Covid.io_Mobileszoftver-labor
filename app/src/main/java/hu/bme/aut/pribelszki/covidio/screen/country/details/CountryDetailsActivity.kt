@@ -20,9 +20,9 @@ class CountryDetailsActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.tabLayout)
         viewPager = findViewById(R.id.viewPager)
 
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Home"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Sport"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Movie"))
+        tabLayout!!.addTab(tabLayout!!.newTab().setText("Overall"))
+        tabLayout!!.addTab(tabLayout!!.newTab().setText("Confirmed"))
+        tabLayout!!.addTab(tabLayout!!.newTab().setText("Death"))
         tabLayout!!.tabGravity = TabLayout.GRAVITY_FILL
 
         val adapter = ViewPagerAdapter(supportFragmentManager, tabLayout!!.tabCount)

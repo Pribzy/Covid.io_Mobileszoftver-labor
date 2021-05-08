@@ -13,4 +13,4 @@ object Loading : CountryDetailsConfirmedState()
 
 object NetworkError: CountryDetailsConfirmedState()
 
-data class ConfirmedStatusesArrived(val countryStatus: List<CountryStatus>) : CountryDetailsConfirmedState()
+data class ConfirmedStatusesArrived(val confirmedStatuses: ConfirmedPresentationModel) : CountryDetailsConfirmedState()
