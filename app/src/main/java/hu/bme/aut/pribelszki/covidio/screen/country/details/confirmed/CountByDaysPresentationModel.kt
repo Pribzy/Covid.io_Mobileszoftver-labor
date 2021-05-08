@@ -1,6 +1,6 @@
 package hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed
 
-data class ConfirmedPresentationModel(
+data class CountByDaysPresentationModel(
     val totalCount: Int,
     val yesterdayCount: Int,
     val threeMonthCount: Int,

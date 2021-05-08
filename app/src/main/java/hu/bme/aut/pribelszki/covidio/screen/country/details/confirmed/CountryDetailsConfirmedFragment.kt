@@ -10,11 +10,7 @@ import hu.bme.aut.pribelszki.covidio.R
 import hu.bme.aut.pribelszki.covidio.util.DECIMAL_FORMAT
 import hu.bme.aut.pribelszki.covidio.util.formatValue
 import kotlinx.android.synthetic.main.fragment_country_details_confirmed.*
-import kotlinx.android.synthetic.main.fragment_country_list.*
 import kotlinx.android.synthetic.main.fragment_country_list.loadingAnimation
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.util.*
 
 class CountryDetailsConfirmedFragment :
     RainbowCakeFragment<CountryDetailsConfirmedState, CountryDetailsConfirmedViewModel>() {
@@ -37,10 +33,10 @@ class CountryDetailsConfirmedFragment :
             is Loading -> loadingAnimation.isVisible = true
             is ConfirmedStatusesArrived -> {
                 loadingAnimation.isVisible = false
-                totalTextField.text = formatValue(viewState.confirmedStatuses.totalCount, DECIMAL_FORMAT)
-                yesterdayTextView.text = formatValue(viewState.confirmedStatuses.yesterdayCount, DECIMAL_FORMAT)
-                threeMonthTextView.text = formatValue(viewState.confirmedStatuses.threeMonthCount, DECIMAL_FORMAT)
-                updateChart(viewState.confirmedStatuses.cases)
+                totalTextField.text = formatValue(viewState.countByDaysStatuses.totalCount, DECIMAL_FORMAT)
+                yesterdayTextView.text = formatValue(viewState.countByDaysStatuses.yesterdayCount, DECIMAL_FORMAT)
+                threeMonthTextView.text = formatValue(viewState.countByDaysStatuses.threeMonthCount, DECIMAL_FORMAT)
+                updateChart(viewState.countByDaysStatuses.cases)
             }
         }
     }
