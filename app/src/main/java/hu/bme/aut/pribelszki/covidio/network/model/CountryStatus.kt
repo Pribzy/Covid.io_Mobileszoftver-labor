@@ -22,23 +22,3 @@ data class CountryStatus(
     @Json(name = "Active") val active: Int,
     @Json(name = "Date") val date: String
 )
-
-fun List<CountryStatus>.toCountByDayPresentationModel(statusType: StatusType): CountByDaysPresentationModel {
-    return CountByDaysPresentationModel(
-        totalCount = if (statusType == StatusType.Confirmed) last().confirmed else last().deaths,
-        yesterdayCount = getLast(1, statusType),
-        threeMonthCount = getLast(90, statusType),
-        cases = this.map {
-            val cases = if (statusType == StatusType.Confirmed) it.confirmed else it.deaths
-            Case(it.date, cases)
-        }
-    )
-}
-
-fun List<CountryStatus>.getLast(day: Int, type: StatusType): Int {
-    return when (type) {
-        StatusType.Overall -> 0
-        StatusType.Confirmed -> (last().confirmed - this[lastIndex - day].confirmed)
-        StatusType.Death -> (last().deaths - this[lastIndex - day].deaths)
-    }
-}

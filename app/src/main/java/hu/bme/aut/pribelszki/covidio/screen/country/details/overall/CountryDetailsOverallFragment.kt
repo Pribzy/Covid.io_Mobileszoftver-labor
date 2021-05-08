@@ -23,7 +23,6 @@ class CountryDetailsOverallFragment :
         .chartType(AAChartType.Waterfall)
         .animationDuration(5)
         .backgroundColor("#F4F4F4")
-        .animationType(AAChartAnimationType.EaseOutBounce)
         .dataLabelsEnabled(false)
         .yAxisTitle("Cases")
         .legendEnabled(false)
@@ -66,9 +65,15 @@ class CountryDetailsOverallFragment :
 
     override fun render(viewState: CountryDetailsOverallState) {
         when (viewState) {
-            is Loading -> loadingAnimation.isVisible = true
+            is Loading -> {
+                loadingAnimation.isVisible = true
+                overallChartView.isVisible = false
+                overallCardView.isVisible = false
+            }
             is OverallStatusesArrived -> {
                 loadingAnimation.isVisible = false
+                overallChartView.isVisible = true
+                overallCardView.isVisible = true
                 val confirmedCount = viewState.overallPresentationModel.confirmedCount
                 val recoveredCount = viewState.overallPresentationModel.recoveredCount
                 val activeCount = viewState.overallPresentationModel.activeCount
@@ -107,7 +112,7 @@ class CountryDetailsOverallFragment :
                     .name("Deaths")
                     .data(arrayOf(deaths))
                     .color("#505050")
-            ), true
+            )
         )
     }
 }
