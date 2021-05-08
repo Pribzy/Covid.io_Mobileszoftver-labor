@@ -7,6 +7,7 @@ import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.github.aachartmodel.aainfographics.aachartcreator.*
 import hu.bme.aut.pribelszki.covidio.R
+import hu.bme.aut.pribelszki.covidio.screen.country.details.model.Case
 import hu.bme.aut.pribelszki.covidio.util.DECIMAL_FORMAT
 import hu.bme.aut.pribelszki.covidio.util.formatValue
 import kotlinx.android.synthetic.main.fragment_country_details_confirmed.*
@@ -23,7 +24,7 @@ class CountryDetailsConfirmedFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        aaChartView = requireActivity().findViewById<AAChartView>(R.id.chart_view)
+        aaChartView = requireActivity().findViewById(R.id.confirmedChartView)
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
         viewModel.loadStatus("hungary")
     }

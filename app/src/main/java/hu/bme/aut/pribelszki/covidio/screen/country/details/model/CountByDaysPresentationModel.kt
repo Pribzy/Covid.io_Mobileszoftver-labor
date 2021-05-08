@@ -1,4 +1,4 @@
-package hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed
+package hu.bme.aut.pribelszki.covidio.screen.country.details.model
 
 data class CountByDaysPresentationModel(
     val totalCount: Int,

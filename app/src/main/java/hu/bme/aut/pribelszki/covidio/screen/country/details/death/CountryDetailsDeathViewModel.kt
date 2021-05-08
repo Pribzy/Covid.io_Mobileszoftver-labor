@@ -8,6 +8,7 @@ class CountryDetailsDeathViewModel @Inject constructor(
     private val countryDetailsDeathPresenter: CountryDetailsDeathPresenter
 ): RainbowCakeViewModel<CountryDetailsDeathState>(Initial) {
     fun loadStatus(countryName: String) = execute {
+        viewState = Loading
         viewState = try {
             val deathStatuses = countryDetailsDeathPresenter.getDeathStatuses(countryName)
             DetailsStatusesArrived(deathStatuses)

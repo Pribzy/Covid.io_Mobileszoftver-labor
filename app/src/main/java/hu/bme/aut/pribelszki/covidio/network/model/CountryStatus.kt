@@ -3,8 +3,8 @@ package hu.bme.aut.pribelszki.covidio.network.model
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import hu.bme.aut.pribelszki.covidio.domain.model.StatusType
-import hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed.Case
-import hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed.CountByDaysPresentationModel
+import hu.bme.aut.pribelszki.covidio.screen.country.details.model.Case
+import hu.bme.aut.pribelszki.covidio.screen.country.details.model.CountByDaysPresentationModel
 
 @JsonClass(generateAdapter = true)
 data class CountryStatus(

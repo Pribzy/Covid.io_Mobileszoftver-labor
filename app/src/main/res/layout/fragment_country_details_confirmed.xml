@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
-        android:id="@+id/chart_view"
+        android:id="@+id/confirmedChartView"
         android:layout_width="match_parent"
         android:layout_height="360dp"
         android:layout_marginTop="24dp"
@@ -22,7 +22,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chart_view" />
+        app:layout_constraintTop_toBottomOf="@id/confirmedChartView" />
 
     <TextView
         android:id="@+id/totalTextField"
