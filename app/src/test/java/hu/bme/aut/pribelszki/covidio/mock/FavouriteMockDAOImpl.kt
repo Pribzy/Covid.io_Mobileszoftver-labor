@@ -1,8 +1,10 @@
-package hu.bme.aut.pribelszki.covidio.room.favouriteCountry
+package hu.bme.aut.pribelszki.covidio.mock
 
+import hu.bme.aut.pribelszki.covidio.room.favouriteCountry.FavouriteCountry
+import hu.bme.aut.pribelszki.covidio.room.favouriteCountry.FavourtieDAO
 import timber.log.Timber
 
-class FavouriteMockDAOImpl: FavouriteMockDAO {
+class FavouriteMockDAOImpl: FavourtieDAO {
     override suspend fun getAll(): List<FavouriteCountry> {
         val favouriteCountry = FavouriteCountry("id","Hungary")
         return listOf(favouriteCountry)

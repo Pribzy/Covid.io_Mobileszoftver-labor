@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Room
-    def room_version = "2.2.6"
+    def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
@@ -96,4 +96,19 @@ dependencies {
 
     // Charts
     implementation 'com.github.AAChartModel:AAChartCore-Kotlin:-SNAPSHOT'
+
+    // Testing
+    def mockito_version = '3.8.0'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.robolectric:robolectric:4.2.1"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:3.1.0"
+    testImplementation "com.google.dagger:dagger:$dagger_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0-RC'
+    kaptTest "com.google.dagger:dagger-compiler:$dagger_version"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation "org.mockito:mockito-core:$mockito_version"
 }

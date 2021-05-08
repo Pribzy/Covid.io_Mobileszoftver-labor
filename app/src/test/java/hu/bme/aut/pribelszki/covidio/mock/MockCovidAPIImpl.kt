@@ -1,9 +1,10 @@
-package hu.bme.aut.pribelszki.covidio.network
+package hu.bme.aut.pribelszki.covidio.mock
 
+import hu.bme.aut.pribelszki.covidio.network.CovidAPI
 import hu.bme.aut.pribelszki.covidio.network.model.*
 import timber.log.Timber
 
-class MockCovidAPIImpl: MockCovidAPI {
+class MockCovidAPIImpl: CovidAPI {
     override suspend fun getCases(): CovidCases {
         val globalCases = GlobalCases(1, 1, 1, 1, 1, 1, "2021.04.12")
         val countryCase = CountryCase("country_id", "country", "CC", "C", 1, 1, 1, 1, 1, 1, "2021.04.12", Empty())
