@@ -1,11 +1,13 @@
 package hu.bme.aut.pribelszki.covidio.screen.country.details
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import hu.bme.aut.pribelszki.covidio.R
 import hu.bme.aut.pribelszki.covidio.screen.country.details.adapter.ViewPagerAdapter
+import hu.bme.aut.pribelszki.covidio.screen.country.list.CountryListActivity
 import kotlinx.android.synthetic.main.activity_country_details.*
 
 class CountryDetailsActivity : AppCompatActivity() {
@@ -19,7 +21,8 @@ class CountryDetailsActivity : AppCompatActivity() {
         toolbarTextView.text = "${countryName} (${countryCode})"
 
         backButton.setOnClickListener {
-            super.onBackPressed()
+            val intent = Intent(this, CountryListActivity::class.java)
+            startActivity(intent)
         }
 
         setupTabLayout()
