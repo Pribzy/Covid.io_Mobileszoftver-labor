@@ -5,6 +5,8 @@ import hu.bme.aut.pribelszki.covidio.di.Injector
 import hu.bme.aut.pribelszki.covidio.domain.CountryListInteractor
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.checkerframework.checker.nullness.qual.AssertNonNullIfNonNull
+import org.junit.Assert
 import org.junit.Before
 import org.junit.FixMethodOrder
 import org.junit.Test
@@ -27,7 +29,8 @@ class CountryListInteractorTests {
 
     @Test
     fun `test random jokes are as expected`() = runBlockingTest {
-        val i = interactor.getCountries().toString()
+        val countries = interactor.getCountries()
+        Assert.assertEquals(countries.size, 1)
 
     }
 }
