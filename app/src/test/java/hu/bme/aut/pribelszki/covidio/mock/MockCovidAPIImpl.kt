@@ -24,5 +24,4 @@ class MockCovidAPIImpl: CovidAPI {
     override suspend fun addCase(case: NewCase): Response<NewCase> {
         return Response.success(case)
     }
-
 }
