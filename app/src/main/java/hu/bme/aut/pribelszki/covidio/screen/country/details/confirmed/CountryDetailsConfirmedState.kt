@@ -1,9 +1,6 @@
 package hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed
 
-import hu.bme.aut.pribelszki.covidio.network.model.CountryStatus
-import hu.bme.aut.pribelszki.covidio.network.model.CovidCases
-import java.lang.Exception
-import kotlin.Error
+import hu.bme.aut.pribelszki.covidio.screen.country.details.model.CountByDaysPresentationModel
 
 sealed class CountryDetailsConfirmedState
 
@@ -13,4 +10,4 @@ object Loading : CountryDetailsConfirmedState()
 
 object NetworkError: CountryDetailsConfirmedState()
 
-data class ConfirmedStatusesArrived(val countryStatus: List<CountryStatus>) : CountryDetailsConfirmedState()
+data class ConfirmedStatusesArrived(val countByDaysStatuses: CountByDaysPresentationModel) : CountryDetailsConfirmedState()

@@ -33,9 +33,5 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideMockCovidApi(): MockCovidAPI = MockCovidAPIImpl()
-
-    @Provides
-    @Singleton
     fun provideMockNetworkInterceptor(): Interceptor = MockNetworkInterceptor()
 }

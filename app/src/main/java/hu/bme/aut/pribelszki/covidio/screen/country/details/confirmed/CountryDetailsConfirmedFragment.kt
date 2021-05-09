@@ -2,14 +2,39 @@ package hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.core.view.isVisible
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
-import co.zsmb.rainbowcake.extensions.exhaustive
+import com.github.aachartmodel.aainfographics.aachartcreator.*
 import hu.bme.aut.pribelszki.covidio.R
-import kotlinx.android.synthetic.main.fragment_country_list.*
+import hu.bme.aut.pribelszki.covidio.screen.country.details.model.Case
+import hu.bme.aut.pribelszki.covidio.util.DECIMAL_FORMAT
+import hu.bme.aut.pribelszki.covidio.util.formatValue
+import kotlinx.android.synthetic.main.fragment_country_details_confirmed.*
+import kotlinx.android.synthetic.main.fragment_country_list.loadingAnimation
 
-class CountryDetailsConfirmedFragment: RainbowCakeFragment<CountryDetailsConfirmedState, CountryDetailsConfirmedViewModel>() {
+class CountryDetailsConfirmedFragment :
+    RainbowCakeFragment<CountryDetailsConfirmedState, CountryDetailsConfirmedViewModel>() {
+
+    private val aaChartModel = AAChartModel()
+        .chartType(AAChartType.Area)
+        .animationDuration(5)
+        .gradientColorEnable(true)
+        .backgroundColor("#F4F4F4")
+        .xAxisLabelsEnabled(false)
+        .dataLabelsEnabled(false)
+        .yAxisTitle("Cases")
+        .legendEnabled(false)
+        .series(
+            arrayOf(
+                AASeriesElement()
+                    .name("Confirmed")
+                    .data(arrayOf())
+                    .color("#983434")
+            )
+        )
+
+    private lateinit var aaChartView: AAChartView
 
     override fun getViewResource() = R.layout.fragment_country_details_confirmed
 
@@ -17,9 +42,36 @@ class CountryDetailsConfirmedFragment: RainbowCakeFragment<CountryDetailsConfirm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        aaChartView = requireActivity().findViewById(R.id.confirmedChartView)
+        aaChartView.aa_drawChartWithChartModel(aaChartModel)
+        val countryId = activity?.intent?.getStringExtra("countryId")
+        if (countryId != null) {
+            viewModel.loadStatus(countryId)
+        }
     }
 
     override fun render(viewState: CountryDetailsConfirmedState) {
-        // TODO: Add render method
+        when (viewState) {
+            is Loading -> loadingAnimation.isVisible = true
+            is ConfirmedStatusesArrived -> {
+                loadingAnimation.isVisible = false
+                totalConfirmedTextView.text = formatValue(viewState.countByDaysStatuses.totalCount, DECIMAL_FORMAT)
+                todayConfirmedTextView.text = formatValue(viewState.countByDaysStatuses.todayCount, DECIMAL_FORMAT)
+                yesterdayConfirmedTextView.text = formatValue(viewState.countByDaysStatuses.yesterdayCount, DECIMAL_FORMAT)
+                lastThreeMonthConfirmedTextView.text = formatValue(viewState.countByDaysStatuses.threeMonthCount, DECIMAL_FORMAT)
+                updateChart(viewState.countByDaysStatuses.cases)
+            }
+        }
+    }
+
+    private fun updateChart(cases: List<Case>) {
+        aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeriesArray(
+            arrayOf(
+                AASeriesElement()
+                    .name("Confirmed")
+                    .data(cases.map { it.count }.toTypedArray())
+                    .color("#983434")
+            )
+        )
     }
 }

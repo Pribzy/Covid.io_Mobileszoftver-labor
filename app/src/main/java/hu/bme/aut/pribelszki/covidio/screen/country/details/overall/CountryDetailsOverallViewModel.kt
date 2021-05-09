@@ -8,6 +8,7 @@ class CountryDetailsOverallViewModel @Inject constructor(
     private val countryDetailsOverallPresenter: CountryDetailsOverallPresenter
 ): RainbowCakeViewModel<CountryDetailsOverallState>(Initial) {
     fun loadStatus(countryName: String) = execute {
+        viewState = Loading
         viewState = try {
             val overallStatuses = countryDetailsOverallPresenter.getOverallStatuses(countryName)
             OverallStatusesArrived(overallStatuses)

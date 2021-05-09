@@ -5,6 +5,8 @@ import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
 import hu.bme.aut.pribelszki.covidio.domain.model.toFavouriteRoomModel
 import hu.bme.aut.pribelszki.covidio.domain.model.toHealedRoomModel
 import hu.bme.aut.pribelszki.covidio.util.formattedNow
+import hu.bme.aut.pribelszki.covidio.util.heal
+import hu.bme.aut.pribelszki.covidio.util.setFavourite
 import java.lang.Exception
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -45,22 +47,21 @@ class CountryListViewModel @Inject constructor(
         }
     }
 
-    private fun handleHealedCountry(healedCountry: CountryListItem) = execute  {
-        viewState = Loading
+    private fun handleHealedCountry(healedCountry: CountryListItem) = execute {
         val list = (viewState as DataReady).countryList
-        list.lastIndexOf(healedCountry).let {
-            list[it].isHealed = true
-            list[it].healedDate = formattedNow()
-        }
+        viewState = Loading
+        list.heal(healedCountry)
         countryListPresenter.healCountry(healedCountry.toHealedRoomModel())
         viewState = DataReady(list)
     }
 
     private fun handleFavouriteItem(countryItem: CountryListItem, to: Boolean) = execute {
-        viewState = Loading
         val list = (viewState as DataReady).countryList
-        list.lastIndexOf(countryItem).let { list[it].isFavourite = to }
-        if (to) countryListPresenter.addFavourite(countryItem.toFavouriteRoomModel()) else countryListPresenter.removeFavourite(
+        viewState = Loading
+        list.setFavourite(country = countryItem, to)
+        if (to)
+            countryListPresenter.addFavourite(countryItem.toFavouriteRoomModel())
+        else countryListPresenter.removeFavourite(
             countryItem.toFavouriteRoomModel()
         )
         viewState = DataReady(list)

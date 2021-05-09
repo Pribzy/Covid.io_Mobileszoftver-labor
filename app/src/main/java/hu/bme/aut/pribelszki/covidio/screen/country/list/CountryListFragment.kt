@@ -1,5 +1,6 @@
 package hu.bme.aut.pribelszki.covidio.screen.country.list
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Adapter
@@ -10,8 +11,10 @@ import androidx.core.view.isVisible
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import co.zsmb.rainbowcake.extensions.exhaustive
+import co.zsmb.rainbowcake.navigation.navigator
 import hu.bme.aut.pribelszki.covidio.R
 import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
+import hu.bme.aut.pribelszki.covidio.screen.country.details.CountryDetailsActivity
 import hu.bme.aut.pribelszki.covidio.screen.country.list.adapter.CountryListAdapter
 import kotlinx.android.synthetic.main.fragment_country_list.*
 
@@ -52,7 +55,11 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
     }
 
     override fun onItemSelected(item: CountryListItem) {
-
+        val intent = Intent(context, CountryDetailsActivity::class.java)
+        intent.putExtra("countryName", item.countryName)
+        intent.putExtra("countryCode", item.countryCode)
+        intent.putExtra("countryId", item.countryIdentifier)
+        startActivity(intent)
     }
 
     override fun onFavouriteTapped(item: CountryListItem, isFavourite: Boolean) {
@@ -71,9 +78,7 @@ class CountryListFragment : RainbowCakeFragment<CountryListViewState, CountryLis
                 titleLayout.isGone = false
             }
         }
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
             override fun onQueryTextChange(newText: String): Boolean {
                 return true
             }
