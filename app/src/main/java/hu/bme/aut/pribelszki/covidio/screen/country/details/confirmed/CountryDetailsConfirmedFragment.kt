@@ -21,24 +21,6 @@ import kotlinx.android.synthetic.main.fragment_country_list.loadingAnimation
 class CountryDetailsConfirmedFragment :
     RainbowCakeFragment<CountryDetailsConfirmedState, CountryDetailsConfirmedViewModel>() {
 
-    private val aaChartModel = AAChartModel()
-        .chartType(AAChartType.Area)
-        .animationDuration(5)
-        .gradientColorEnable(true)
-        .backgroundColor("#F4F4F4")
-        .xAxisLabelsEnabled(false)
-        .dataLabelsEnabled(false)
-        .yAxisTitle("Cases")
-        .legendEnabled(false)
-        .series(
-            arrayOf(
-                AASeriesElement()
-                    .name("Confirmed")
-                    .data(arrayOf())
-                    .color("#983434")
-            )
-        )
-
     private lateinit var aaChartView: AAChartView
 
     override fun getViewResource() = R.layout.fragment_country_details_confirmed
@@ -48,7 +30,6 @@ class CountryDetailsConfirmedFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         aaChartView = requireActivity().findViewById(R.id.confirmedChartView)
-        aaChartView.aa_drawChartWithChartModel(aaChartModel)
         val countryId = activity?.intent?.getStringExtra("countryId")
         if (countryId != null) {
             viewModel.loadStatus(countryId)
@@ -74,13 +55,23 @@ class CountryDetailsConfirmedFragment :
     }
 
     private fun updateChart(cases: List<Case>) {
-        aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeriesArray(
-            arrayOf(
-                AASeriesElement()
-                    .name("Confirmed")
-                    .data(cases.map { it.count }.toTypedArray())
-                    .color("#983434")
+        val aaChartModel = AAChartModel()
+            .chartType(AAChartType.Area)
+            .animationDuration(5)
+            .gradientColorEnable(true)
+            .backgroundColor("#F4F4F4")
+            .xAxisLabelsEnabled(false)
+            .dataLabelsEnabled(false)
+            .yAxisTitle("Cases")
+            .legendEnabled(false)
+            .series(
+                arrayOf(
+                    AASeriesElement()
+                        .name("Confirmed")
+                        .data(cases.map { it.count }.toTypedArray())
+                        .color("#983434")
+                )
             )
-        )
+        aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
 }
