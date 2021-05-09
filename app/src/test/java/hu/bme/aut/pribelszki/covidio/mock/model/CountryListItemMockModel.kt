@@ -3,10 +3,10 @@ package hu.bme.aut.pribelszki.covidio.mock.model
 import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
 
 val mockCountryListItemModel = CountryListItem(
-    id = "country.id",
-    countryIdentifier = "country.slug",
-    countryName = "country.country",
-    countryCode = "country.countryCode",
+    id = "id",
+    countryName = "country",
+    countryCode = "C",
+    countryIdentifier = "id",
     confirmedCount = 1,
     recoveredCount = 1,
     deathCount = 1,
