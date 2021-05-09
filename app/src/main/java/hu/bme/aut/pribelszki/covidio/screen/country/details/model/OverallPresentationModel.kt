@@ -9,7 +9,7 @@ data class OverallPresentationModel(
     val deathCount: Int
 )
 
-fun List<CountryStatus>.toOverallPresentationModel(): OverallPresentationModel {
+public fun List<CountryStatus>.toOverallPresentationModel(): OverallPresentationModel {
     return OverallPresentationModel(
         confirmedCount = last().confirmed,
         recoveredCount = last().recovered,

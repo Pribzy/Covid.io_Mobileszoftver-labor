@@ -10,7 +10,7 @@ class HealedMockDAOImpl: HealedDAO {
         return listOf(favouriteCountry)
     }
 
-    override suspend fun heal(newCountry: HealedCountry) {
-        Timber.tag("Country healed.").v(newCountry.id)
+    override suspend fun heal(newCountry: HealedCountry): Long {
+        return newCountry.id.toLong()
     }
 }

@@ -11,7 +11,7 @@ interface FavourtieDAO {
     suspend fun getAll(): List<FavouriteCountry>
 
     @Insert
-    suspend fun addFavourite(newCountry: FavouriteCountry)
+    suspend fun addFavourite(newCountry: FavouriteCountry): Long
 
     @Delete
     suspend fun removeFavourite(deletedCountry: FavouriteCountry)

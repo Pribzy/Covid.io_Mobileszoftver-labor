@@ -31,17 +31,17 @@ class CountryListInteractor @Inject constructor(
         }
     }
 
-    suspend fun healCountry(healedCountry: HealedCountry): Boolean {
-        val countryHealedNetwork = networkDataSource.healCountry(healedCountry.id)
-        val countryHealedDisc = favouriteDataSource.healCountry(healedCountry)
-        return countryHealedNetwork and countryHealedDisc
+    suspend fun healCountry(healedCountry: HealedCountry): String {
+        networkDataSource.healCountry(healedCountry.id)
+        val healCountryRoom = favouriteDataSource.healCountry(healedCountry)
+        return healCountryRoom.toString()
     }
 
-    suspend fun addFavourite(newCountry: FavouriteCountry) {
-        favouriteDataSource.addFavourite(newCountry)
+    suspend fun addFavourite(newCountry: FavouriteCountry): String {
+        return favouriteDataSource.addFavourite(newCountry).toString()
     }
 
-    suspend fun removeFavourite(deletedCountry: FavouriteCountry) {
-        favouriteDataSource.removeFavourite(deletedCountry)
+    suspend fun removeFavourite(deletedCountry: FavouriteCountry): Boolean {
+        return favouriteDataSource.removeFavourite(deletedCountry)
     }
 }

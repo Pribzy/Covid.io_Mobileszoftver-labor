@@ -10,5 +10,5 @@ interface HealedDAO {
     suspend fun getAll(): List<HealedCountry>
 
     @Insert
-    suspend fun heal(newCountry: HealedCountry)
+    suspend fun heal(newCountry: HealedCountry): Long
 }

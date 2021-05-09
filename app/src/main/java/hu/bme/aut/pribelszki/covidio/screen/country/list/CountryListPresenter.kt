@@ -20,15 +20,15 @@ class CountryListPresenter @Inject constructor(
         }
     }
 
-    suspend fun healCountry(healedCountry: HealedCountry) = withIOContext {
+    suspend fun healCountry(healedCountry: HealedCountry): String = withIOContext {
         countryListInteractor.healCountry(healedCountry)
     }
 
-    suspend fun addFavourite(newCountry: FavouriteCountry) = withIOContext {
+    suspend fun addFavourite(newCountry: FavouriteCountry): String = withIOContext {
         countryListInteractor.addFavourite(newCountry)
     }
 
-    suspend fun removeFavourite(deletedCountry: FavouriteCountry) = withIOContext {
+    suspend fun removeFavourite(deletedCountry: FavouriteCountry): Boolean = withIOContext {
         countryListInteractor.removeFavourite(deletedCountry)
     }
 
