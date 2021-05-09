@@ -23,12 +23,12 @@
         app:cardCornerRadius="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/confirmedChartView">
+        app:layout_constraintTop_toBottomOf="@id/confirmedChartView"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,14 +45,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:text="Total"
                     android:textAlignment="center"
                     android:textColor="@color/virusRed"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="Total" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/totalConfirmedTextView"
@@ -84,14 +84,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:text="Today"
                     android:textAlignment="center"
                     android:textColor="@color/virusRed"
                     android:textSize="18sp"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="Today" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/todayConfirmedTextView"
@@ -123,14 +123,14 @@
                     android:id="@+id/activeTextViewTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Yesterday"
                     android:textAlignment="center"
                     android:textColor="@color/virusRed"
                     android:textSize="18sp"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="Yesterday" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/yesterdayConfirmedTextView"
@@ -163,14 +163,14 @@
                     android:id="@+id/deathTextViewTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="Last 3 month"
                     android:textAlignment="center"
                     android:textColor="@color/virusRed"
                     android:textSize="18sp"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="Last 3 month" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/lastThreeMonthConfirmedTextView"
@@ -204,5 +204,18 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="loading_animation.json"
         app:lottie_loop="true" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/confirmedNewCaseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/virusRed"
+        android:text="New case"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_add"
+        app:iconTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

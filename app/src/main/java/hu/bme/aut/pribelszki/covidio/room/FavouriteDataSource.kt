@@ -27,7 +27,8 @@ class FavouriteDataSource @Inject constructor(
         return healedDAO.getAll()
     }
 
-    suspend fun healCountry(healedCountry: HealedCountry) {
+    suspend fun healCountry(healedCountry: HealedCountry): Boolean {
         healedDAO.heal(healedCountry)
+        return true
     }
 }

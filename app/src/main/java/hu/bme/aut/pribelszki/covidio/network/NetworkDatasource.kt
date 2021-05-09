@@ -13,15 +13,15 @@ class NetworkDatasource @Inject constructor(
         return covidAPI.getCases()
     }
 
-    suspend fun healCountry(countryName: String) {
-        covidAPI.healCountry(countryName)
+    suspend fun healCountry(countryName: String): Boolean {
+        return covidAPI.healCountry(countryName).isSuccessful
     }
 
     suspend fun getCountryStatuses(countryName: String): List<CountryStatus> {
         return covidAPI.getCountryStatuses(countryName)
     }
 
-    suspend fun addCase(newCase: NewCase) {
-        covidAPI.addCase(newCase)
+    suspend fun addCase(newCase: NewCase): NewCase? {
+        return covidAPI.addCase(newCase).body()
     }
 }

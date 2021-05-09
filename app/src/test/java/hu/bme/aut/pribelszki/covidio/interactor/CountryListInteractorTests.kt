@@ -1,11 +1,10 @@
 package hu.bme.aut.pribelszki.covidio.interactor
 
-import android.util.Log
 import hu.bme.aut.pribelszki.covidio.di.Injector
 import hu.bme.aut.pribelszki.covidio.domain.CountryListInteractor
+import hu.bme.aut.pribelszki.covidio.room.healedCountry.HealedCountry
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.checkerframework.checker.nullness.qual.AssertNonNullIfNonNull
 import org.junit.Assert
 import org.junit.Before
 import org.junit.FixMethodOrder
@@ -29,8 +28,7 @@ class CountryListInteractorTests {
 
     @Test
     fun `test random jokes are as expected`() = runBlockingTest {
-        val countries = interactor.getCountries()
-        Assert.assertEquals(countries.size, 1)
-
+        val isHealedSuccessful = interactor.healCountry(HealedCountry(id = "1", healedDate = "date"))
+        Assert.assertTrue(isHealedSuccessful)
     }
 }
