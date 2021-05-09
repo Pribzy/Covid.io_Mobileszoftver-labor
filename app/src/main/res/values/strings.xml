@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">covid.io</string>
+    <string name="healDate">Gyógulás dátuma: 2012.04.12</string>
 </resources>

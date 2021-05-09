@@ -17,5 +17,6 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun providesMockFavouriteDAO(): FavouriteMockDAO = FavouriteMockDAOImpl()
+    fun providesHealedDAO(favouriteDatabase: FavouriteDatabase) = favouriteDatabase.healedDao()
+
 }

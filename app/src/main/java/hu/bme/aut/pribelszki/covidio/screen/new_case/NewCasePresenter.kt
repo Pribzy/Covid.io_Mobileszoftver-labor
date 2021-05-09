@@ -10,7 +10,7 @@ import javax.inject.Inject
 class NewCasePresenter @Inject constructor(
     private val newCaseInteractor: NewCaseInteractor
 ) {
-    suspend fun addCase(newCase: NewCase) = withIOContext {
+    suspend fun addCase(newCase: NewCase): NewCase? = withIOContext {
         newCaseInteractor.addCase(newCase)
     }
 }

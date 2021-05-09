@@ -4,10 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import hu.bme.aut.pribelszki.covidio.room.favouriteCountry.FavouriteCountry
+import hu.bme.aut.pribelszki.covidio.room.favouriteCountry.FavourtieDAO
+import hu.bme.aut.pribelszki.covidio.room.healedCountry.HealedCountry
+import hu.bme.aut.pribelszki.covidio.room.healedCountry.HealedDAO
 
-@Database(entities = [FavouriteCountry::class], version = 1)
+@Database(
+    entities = [
+        FavouriteCountry::class,
+        HealedCountry::class
+    ], version = 5
+)
 abstract class FavouriteDatabase : RoomDatabase() {
     abstract fun favouriteDao(): FavourtieDAO
+    abstract fun healedDao(): HealedDAO
 
     companion object {
         @Volatile
@@ -16,12 +26,12 @@ abstract class FavouriteDatabase : RoomDatabase() {
         fun getInstance(context: Context): FavouriteDatabase {
             return INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
-                        context,
-                        FavouriteDatabase::class.java, "favourites_database"
+                    context,
+                    FavouriteDatabase::class.java, "covidio_database"
                 )
-                        .fallbackToDestructiveMigration()
-                        .build()
-                        .also { INSTANCE = it }
+                    .fallbackToDestructiveMigration()
+                    .build()
+                    .also { INSTANCE = it }
             }
         }
     }

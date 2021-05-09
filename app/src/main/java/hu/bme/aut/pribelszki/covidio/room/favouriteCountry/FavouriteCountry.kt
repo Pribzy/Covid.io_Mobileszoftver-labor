@@ -1,4 +1,4 @@
-package hu.bme.aut.pribelszki.covidio.room
+package hu.bme.aut.pribelszki.covidio.room.favouriteCountry
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity
@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "favourites")
 class FavouriteCountry(
-    @PrimaryKey(autoGenerate = true) var countryId: Long?,
+    @PrimaryKey var id: String,
     @ColumnInfo(name = "countryName") var countryName: String
 )

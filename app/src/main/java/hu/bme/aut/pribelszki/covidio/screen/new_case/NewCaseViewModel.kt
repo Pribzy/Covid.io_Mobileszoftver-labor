@@ -9,9 +9,10 @@ class NewCaseViewModel @Inject constructor(
     private val newCasePresenter: NewCasePresenter
 ): RainbowCakeViewModel<NewCaseViewState>(Initial) {
     fun addCase(newCase: NewCase) = execute {
+        viewState = Loading
         viewState = try {
-            newCasePresenter.addCase(newCase)
-            CaseUploaded
+            val createdCase = newCasePresenter.addCase(newCase)
+            CaseUploaded(createdCase)
         } catch (e: Exception) {
             NetworkError
         }

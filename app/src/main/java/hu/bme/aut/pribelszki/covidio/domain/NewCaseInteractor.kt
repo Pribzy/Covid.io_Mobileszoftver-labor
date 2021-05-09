@@ -7,7 +7,7 @@ import javax.inject.Inject
 class NewCaseInteractor @Inject constructor(
     private val networkDataSource: NetworkDatasource
 ) {
-    suspend fun addCase(newCase: NewCase) {
-        networkDataSource.addCase(newCase)
+    suspend fun addCase(newCase: NewCase): NewCase? {
+        return networkDataSource.addCase(newCase)
     }
 }
