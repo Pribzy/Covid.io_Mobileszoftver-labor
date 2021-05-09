@@ -1,13 +1,18 @@
 package hu.bme.aut.pribelszki.covidio.screen.country.details.confirmed
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
+import co.zsmb.rainbowcake.navigation.navigator
 import com.github.aachartmodel.aainfographics.aachartcreator.*
 import hu.bme.aut.pribelszki.covidio.R
+import hu.bme.aut.pribelszki.covidio.screen.country.details.CountryDetailsActivity
 import hu.bme.aut.pribelszki.covidio.screen.country.details.model.Case
+import hu.bme.aut.pribelszki.covidio.screen.new_case.NewCaseActivity
+import hu.bme.aut.pribelszki.covidio.screen.new_case.NewCaseFragment
 import hu.bme.aut.pribelszki.covidio.util.DECIMAL_FORMAT
 import hu.bme.aut.pribelszki.covidio.util.formatValue
 import kotlinx.android.synthetic.main.fragment_country_details_confirmed.*
@@ -47,6 +52,10 @@ class CountryDetailsConfirmedFragment :
         val countryId = activity?.intent?.getStringExtra("countryId")
         if (countryId != null) {
             viewModel.loadStatus(countryId)
+        }
+        confirmedNewCaseButton.setOnClickListener {
+            val intent = Intent(context, NewCaseActivity::class.java)
+            startActivity(intent)
         }
     }
 

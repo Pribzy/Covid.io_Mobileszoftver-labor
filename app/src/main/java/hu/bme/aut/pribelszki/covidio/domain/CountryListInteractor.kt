@@ -24,15 +24,17 @@ class CountryListInteractor @Inject constructor(
                 recoveredCount = country.totalRecovered,
                 deathCount = country.totalDeaths,
                 isFavourite = favouriteCountryIds.contains(country.id),
-                isHealed =  favouriteDataSource.getAllHealed().map { it.id }.contains(country.id),
-                healedDate = favouriteDataSource.getAllHealed().find { it.id == country.id }?.healedDate
+                isHealed = favouriteDataSource.getAllHealed().map { it.id }.contains(country.id),
+                healedDate = favouriteDataSource.getAllHealed()
+                    .find { it.id == country.id }?.healedDate
             )
         }
     }
 
-    suspend fun healCountry(healedCountry: HealedCountry) {
-        networkDataSource.healCountry(healedCountry.id)
-        favouriteDataSource.healCountry(healedCountry)
+    suspend fun healCountry(healedCountry: HealedCountry): Boolean {
+        val countryHealedNetwork = networkDataSource.healCountry(healedCountry.id)
+        val countryHealedDisc = favouriteDataSource.healCountry(healedCountry)
+        return countryHealedNetwork and countryHealedDisc
     }
 
     suspend fun addFavourite(newCountry: FavouriteCountry) {
