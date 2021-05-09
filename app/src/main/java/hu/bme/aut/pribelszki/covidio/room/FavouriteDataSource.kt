@@ -15,20 +15,20 @@ class FavouriteDataSource @Inject constructor(
         return favourtieDAO.getAll()
     }
 
-    suspend fun addFavourite(favouriteCountry: FavouriteCountry) {
-         favourtieDAO.addFavourite(favouriteCountry)
+    suspend fun addFavourite(favouriteCountry: FavouriteCountry): Long {
+        return favourtieDAO.addFavourite(favouriteCountry)
     }
 
-    suspend fun removeFavourite(deletedCountry: FavouriteCountry) {
+    suspend fun removeFavourite(deletedCountry: FavouriteCountry): Boolean {
         favourtieDAO.removeFavourite(deletedCountry)
+        return true
     }
 
     suspend fun getAllHealed(): List<HealedCountry> {
         return healedDAO.getAll()
     }
 
-    suspend fun healCountry(healedCountry: HealedCountry): Boolean {
-        healedDAO.heal(healedCountry)
-        return true
+    suspend fun healCountry(healedCountry: HealedCountry): Long {
+        return healedDAO.heal(healedCountry)
     }
 }

@@ -10,11 +10,9 @@ class FavouriteMockDAOImpl: FavourtieDAO {
         return listOf(favouriteCountry)
     }
 
-    override suspend fun addFavourite(newCountry: FavouriteCountry) {
-        Timber.tag("Country added to favourite list.").v(newCountry.id.toString())
+    override suspend fun addFavourite(newCountry: FavouriteCountry): Long {
+        return newCountry.id.toLong()
     }
 
-    override suspend fun removeFavourite(deletedCountry: FavouriteCountry) {
-        Timber.tag("Country deleted from favourite list.").v(deletedCountry.id.toString())
-    }
+    override suspend fun removeFavourite(deletedCountry: FavouriteCountry) {}
 }
