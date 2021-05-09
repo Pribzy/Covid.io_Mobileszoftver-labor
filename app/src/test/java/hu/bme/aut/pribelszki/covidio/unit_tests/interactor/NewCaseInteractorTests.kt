@@ -31,7 +31,7 @@ class NewCaseInteractorTests {
     }
 
     @Test
-    fun test_addNewCase_returnWithNewCase() = runBlockingTest {
+    fun test_addNewCase_returnWith_newCase() = runBlockingTest {
         /* Given */
         val newCase = NewCase(name = "Test name", gender = "female", age = 25, status = "Confirmed")
         val newCreatedCase = interactor.addCase(newCase)

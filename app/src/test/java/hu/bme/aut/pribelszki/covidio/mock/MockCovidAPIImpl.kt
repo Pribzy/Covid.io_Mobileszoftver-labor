@@ -14,7 +14,11 @@ class MockCovidAPIImpl: CovidAPI {
     }
 
     override suspend fun getCountryStatuses(countryName: String): List<CountryStatus> {
-        return listOf(mockCountryStatus)
+        val countryStatusList = mutableListOf(mockCountryStatus)
+        for (i in 1..90) {
+            countryStatusList.add(mockCountryStatus)
+        }
+        return countryStatusList
     }
 
     override suspend fun healCountry(countryName: String): Response<Unit> {

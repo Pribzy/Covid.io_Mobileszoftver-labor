@@ -31,7 +31,7 @@ class CountryDetailsInteractorTests {
     }
 
     @Test
-    fun test_getCountryStatuses_returnWithCountryStatuses() = runBlockingTest {
+    fun test_getCountryStatuses_returnWith_countryStatuses() = runBlockingTest {
         /* Given */
         val countryStatuses = interactor.getCountryStatuses("country")
         /* When */
