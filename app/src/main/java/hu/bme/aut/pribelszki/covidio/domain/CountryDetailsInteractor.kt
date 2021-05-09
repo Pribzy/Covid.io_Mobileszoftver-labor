@@ -1,6 +1,5 @@
 package hu.bme.aut.pribelszki.covidio.domain
 
-import hu.bme.aut.pribelszki.covidio.domain.model.StatusType
 import hu.bme.aut.pribelszki.covidio.network.NetworkDatasource
 import hu.bme.aut.pribelszki.covidio.network.model.CountryStatus
 import javax.inject.Inject
