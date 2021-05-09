@@ -19,36 +19,6 @@ class CountryDetailsOverallFragment :
 
     private lateinit var aaChartView: AAChartView
 
-    private val aaChartModel: AAChartModel = AAChartModel()
-        .chartType(AAChartType.Waterfall)
-        .animationDuration(5)
-        .backgroundColor("#F4F4F4")
-        .dataLabelsEnabled(false)
-        .yAxisTitle("Cases")
-        .legendEnabled(false)
-        .categories(arrayOf("Statistics"))
-        .xAxisLabelsEnabled(false)
-        .series(
-            arrayOf(
-                AASeriesElement()
-                    .name("Confirmed")
-                    .data(arrayOf(0))
-                    .color("#983434"),
-                AASeriesElement()
-                    .name("Recovered")
-                    .data(arrayOf(0))
-                    .color("#1F9A78"),
-                AASeriesElement()
-                    .name("Active")
-                    .data(arrayOf(0))
-                    .color("#2B5F9E"),
-                AASeriesElement()
-                    .name("Deaths")
-                    .data(arrayOf(0))
-                    .color("#505050")
-            )
-        )
-
     override fun getViewResource() = R.layout.fragment_country_details_overall
 
     override fun provideViewModel() = getViewModelFromFactory()
@@ -56,7 +26,6 @@ class CountryDetailsOverallFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         aaChartView = requireActivity().findViewById(R.id.overallChartView)
-        aaChartView.aa_drawChartWithChartModel(aaChartModel)
         val countryId = activity?.intent?.getStringExtra("countryId")
         if (countryId != null) {
             viewModel.loadStatus(countryId)
@@ -83,6 +52,7 @@ class CountryDetailsOverallFragment :
                 recoveredOverallTextView.text = recoveredCount.toRoundedString()
                 activeTextView.text = activeCount.toRoundedString()
                 deathTextView.text = deathCount.toRoundedString()
+
                 updateChart(
                     confirmed = confirmedCount,
                     recovered = recoveredCount,
@@ -94,25 +64,35 @@ class CountryDetailsOverallFragment :
     }
 
     private fun updateChart(confirmed: Int, recovered: Int, deaths: Int, active: Int) {
-        aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeriesArray(
-            arrayOf(
-                AASeriesElement()
-                    .name("Confirmed")
-                    .data(arrayOf(confirmed))
-                    .color("#983434"),
-                AASeriesElement()
-                    .name("Recovered")
-                    .data(arrayOf(recovered))
-                    .color("#1F9A78"),
-                AASeriesElement()
-                    .name("Actives")
-                    .data(arrayOf(active))
-                    .color("#2B5F9E"),
-                AASeriesElement()
-                    .name("Deaths")
-                    .data(arrayOf(deaths))
-                    .color("#505050")
+        val aaChartModel: AAChartModel = AAChartModel()
+            .chartType(AAChartType.Waterfall)
+            .animationDuration(5)
+            .backgroundColor("#F4F4F4")
+            .dataLabelsEnabled(false)
+            .yAxisTitle("Cases")
+            .legendEnabled(false)
+            .categories(arrayOf("Statistics"))
+            .xAxisLabelsEnabled(false)
+            .series(
+                arrayOf(
+                    AASeriesElement()
+                        .name("Confirmed")
+                        .data(arrayOf(confirmed))
+                        .color("#983434"),
+                    AASeriesElement()
+                        .name("Recovered")
+                        .data(arrayOf(recovered))
+                        .color("#1F9A78"),
+                    AASeriesElement()
+                        .name("Actives")
+                        .data(arrayOf(active))
+                        .color("#2B5F9E"),
+                    AASeriesElement()
+                        .name("Deaths")
+                        .data(arrayOf(deaths))
+                        .color("#505050")
+                )
             )
-        )
+        aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
 }

@@ -3,15 +3,11 @@ package hu.bme.aut.pribelszki.covidio.screen.country.list
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Adapter
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
-import co.zsmb.rainbowcake.extensions.exhaustive
-import co.zsmb.rainbowcake.navigation.navigator
 import hu.bme.aut.pribelszki.covidio.R
 import hu.bme.aut.pribelszki.covidio.domain.model.CountryListItem
 import hu.bme.aut.pribelszki.covidio.screen.country.details.CountryDetailsActivity

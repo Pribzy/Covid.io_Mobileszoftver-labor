@@ -18,24 +18,6 @@ class CountryDetailsDeathFragment : RainbowCakeFragment<CountryDetailsDeathState
 
     private lateinit var aaChartView: AAChartView
 
-    private val aaChartModel = AAChartModel()
-        .chartType(AAChartType.Area)
-        .animationDuration(5)
-        .backgroundColor("#F4F4F4")
-        .gradientColorEnable(true)
-        .xAxisLabelsEnabled(false)
-        .dataLabelsEnabled(false)
-        .yAxisTitle("Cases")
-        .legendEnabled(false)
-        .series(
-            arrayOf(
-                AASeriesElement()
-                    .name("Deaths")
-                    .data(arrayOf())
-                    .color("#505050")
-            )
-        )
-
     override fun getViewResource() = R.layout.fragment_country_details_death
 
     override fun provideViewModel() = getViewModelFromFactory()
@@ -43,7 +25,6 @@ class CountryDetailsDeathFragment : RainbowCakeFragment<CountryDetailsDeathState
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         aaChartView = requireActivity().findViewById(R.id.deathsChartView)
-        aaChartView.aa_drawChartWithChartModel(aaChartModel)
         val countryId = activity?.intent?.getStringExtra("countryId")
         if (countryId != null) {
             viewModel.loadStatus(countryId)
@@ -65,13 +46,24 @@ class CountryDetailsDeathFragment : RainbowCakeFragment<CountryDetailsDeathState
     }
 
     private fun updateChart(cases: List<Case>) {
-        aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeriesArray(
-            arrayOf(
-                AASeriesElement()
-                    .name("Deaths")
-                    .data(cases.map { it.count }.toTypedArray())
-                    .color("#505050")
+        val aaChartModel = AAChartModel()
+            .chartType(AAChartType.Area)
+            .animationDuration(5)
+            .backgroundColor("#F4F4F4")
+            .gradientColorEnable(true)
+            .xAxisLabelsEnabled(false)
+            .dataLabelsEnabled(false)
+            .yAxisTitle("Cases")
+            .legendEnabled(false)
+            .series(
+                arrayOf(
+                    AASeriesElement()
+                        .name("Deaths")
+                        .data(cases.map { it.count }.toTypedArray())
+                        .color("#505050")
+                )
             )
-        )
+
+        aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
 }
