@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "199705333442",
+    "project_id": "mobillabor-5422c",
+    "storage_bucket": "mobillabor-5422c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199705333442:android:11be73d08c99cf6f59f55b",
+        "android_client_info": {
+          "package_name": "hu.bme.aut.pribelszki.covidio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199705333442-3f6qntvsjqo44m8jit99svhkt13u2rl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9QVIQTX0OkGdYdj30IiEehAkgKm7zyhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199705333442-3f6qntvsjqo44m8jit99svhkt13u2rl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

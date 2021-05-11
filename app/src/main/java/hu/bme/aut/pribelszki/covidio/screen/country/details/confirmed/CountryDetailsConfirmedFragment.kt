@@ -35,8 +35,9 @@ class CountryDetailsConfirmedFragment :
             viewModel.loadStatus(countryId)
         }
         confirmedNewCaseButton.setOnClickListener {
-            val intent = Intent(context, NewCaseActivity::class.java)
-            startActivity(intent)
+            throw RuntimeException("Test Crash")
+            //val intent = Intent(context, NewCaseActivity::class.java)
+            //startActivity(intent)
         }
     }
 
