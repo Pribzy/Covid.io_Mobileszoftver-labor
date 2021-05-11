@@ -6,21 +6,23 @@ import android.view.View
 import androidx.core.view.isVisible
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
-import co.zsmb.rainbowcake.navigation.navigator
-import com.github.aachartmodel.aainfographics.aachartcreator.*
+import com.github.aachartmodel.aainfographics.aachartcreator.AAChartModel
+import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
+import com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+import com.github.aachartmodel.aainfographics.aachartcreator.AASeriesElement
+import com.google.firebase.analytics.FirebaseAnalytics
 import hu.bme.aut.pribelszki.covidio.R
-import hu.bme.aut.pribelszki.covidio.screen.country.details.CountryDetailsActivity
 import hu.bme.aut.pribelszki.covidio.screen.country.details.model.Case
 import hu.bme.aut.pribelszki.covidio.screen.new_case.NewCaseActivity
-import hu.bme.aut.pribelszki.covidio.screen.new_case.NewCaseFragment
 import hu.bme.aut.pribelszki.covidio.util.DECIMAL_FORMAT
 import hu.bme.aut.pribelszki.covidio.util.formatValue
 import kotlinx.android.synthetic.main.fragment_country_details_confirmed.*
 import kotlinx.android.synthetic.main.fragment_country_list.loadingAnimation
 
+
 class CountryDetailsConfirmedFragment :
     RainbowCakeFragment<CountryDetailsConfirmedState, CountryDetailsConfirmedViewModel>() {
-
+    private var analytics: FirebaseAnalytics? = null
     private lateinit var aaChartView: AAChartView
 
     override fun getViewResource() = R.layout.fragment_country_details_confirmed
@@ -30,11 +32,17 @@ class CountryDetailsConfirmedFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         aaChartView = requireActivity().findViewById(R.id.confirmedChartView)
+        analytics = FirebaseAnalytics.getInstance(activity)
         val countryId = activity?.intent?.getStringExtra("countryId")
         if (countryId != null) {
             viewModel.loadStatus(countryId)
         }
         confirmedNewCaseButton.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "button_tap")
+            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "country_details_fragment")
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "action")
+            analytics!!.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, bundle)
             val intent = Intent(context, NewCaseActivity::class.java)
             startActivity(intent)
         }
